@@ -1,15 +1,13 @@
 import {Form, Button} from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom';
 import style from '../pages/Login.module.css';
-import back from "../pages/assets/back-button.png"
-import stick from '../pages/assets/stick.png';
 
 function Login() {
     const navigate = useNavigate();
     return (
     <div>
         <div className={style.back}>
-            <img src={back} alt="back" style={{width: "3rem"}} onClick={() => navigate(-1)} />
+            <img src="/back-button.png" alt="back" style={{width: "3rem"}} onClick={() => navigate(-1)} />
             <span>
                 <button onClick={() => navigate(-1)}>BACK</button>
             </span>
@@ -32,7 +30,7 @@ function Login() {
                     </Button>
                 </Form>
                 <div className="stick d-flex justify-content-center">
-                    <img src={stick} alt="stick" />
+                    <img src="/stick.png" alt="stick" />
                 </div>
                 <p>Don't have an account? <Link to="register" className='text-light text-center'>Register</Link> </p>
             </div>
