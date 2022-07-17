@@ -1,18 +1,41 @@
 body {
   overflow-x: hidden;
+  background-color: #002176;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #landing-page {
   background-image: url(../pages/assets/game1.png);
-  background-position: center;
   background-size: cover;
-  width: 100%;
-  height: 776px;
-  left: 0px;
-  top: 0px;
+  background-position: center;
+  max-width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
-h1 {
+#landing-page button {
+  margin-top: 1em;
+  width: 10rem;
+  font-weight: 700;
+}
+
+#landing-page h1 {
+  line-height: 2.5rem;
+  color: #cfdbfa;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #002176,
+    0 0 30px #002176, 0 0 40px #002176, 0 0 55px #002176, 0 0 75px #002176;
+}
+
+/* h1 {
   position: absolute;
   width: 789px;
   height: 72px;
@@ -28,9 +51,9 @@ h1 {
   font-variation-settings: "slnt" 0;
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-}
+} */
 
-.btn-primary {
+/* .btn-primary {
   position: absolute;
   margin-top: 1.5rem;
   width: 228px;
@@ -50,4 +73,4 @@ h1 {
   -ms-border-radius: 25px;
   -o-border-radius: 25px;
   border-radius: 25px;
-}
+} */

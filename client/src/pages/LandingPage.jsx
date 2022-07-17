@@ -6,13 +6,18 @@ function LandingPage() {
         <>
         <Header />
         <div id="landing-page">
-            <h1>PLAY OUR GAMES NOW AND GET NEW EXPERIENCES
-            <br />
-            PLEASE LOGIN TO PLAY!</h1>
+            <div className="content py-4">
+                <h1>PLAY OUR GAMES NOW AND GET NEW EXPERIENCES</h1>
+                <br />
+                <h1>PLEASE LOGIN TO PLAY!</h1>
+          
+                <button type="button" class="btn btn-lg btn-primary">
+                    PLAY NOW!
+                </button>
+
+            </div>
+        
         </div>
-            <button type="button" class="btn btn-primary">
-                PLAY NOW!
-            </button>
         </>
     );
 }
