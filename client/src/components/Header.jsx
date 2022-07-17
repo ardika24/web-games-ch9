@@ -1,6 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-// import styles from "./Header.module.css";
 import Logo from "../pages/assets/logo-social1.png"
 
 function Header() {
