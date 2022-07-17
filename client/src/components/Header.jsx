@@ -10,8 +10,8 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end fs-3">
           <Nav>
-            <Nav.Link as={NavLink} to="#login">Login</Nav.Link>
-            <Nav.Link as={NavLink} to="#register">
+            <Nav.Link as={NavLink} to="/login" className="text-light">Login</Nav.Link>
+            <Nav.Link as={NavLink} to="/register" className="text-light">
               Register
             </Nav.Link>
           </Nav>
