@@ -1,5 +1,5 @@
-const userRouter = require("./user.router");
 const v1 = require("express").Router();
+const userRouter = require("./user.router");
 
 v1.get("/", (_, res) => {
   res.send("from v1");
