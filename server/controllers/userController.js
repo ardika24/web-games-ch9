@@ -81,7 +81,7 @@ class UserController {
       const newUser = {
         username,
         email,
-        password: await hasPassword(password),
+        password: await hashPassword(password),
         bio,
         city,
         social_media_url,

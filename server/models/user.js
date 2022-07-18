@@ -2,7 +2,6 @@
 const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
 const jwt = require("jsonwebtoken");
-const { verifyPassword } = require("../utils/passwordHandler");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -16,11 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     }
     static #encrypt = (password) => bcrypt.hashSync(password, 10);
 
-    static registerUser = async ({ username, password }) => {
+    static registerUser = async ({ email, username, password }) => {
       try {
         const user = await this.findOne({ where: { username } });
         if (user) throw "Username already exist";
         return this.create({
+          email,
           username,
           password: this.#encrypt(password),
         });
@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
     generateToken = () => {
       const playload = {
         id: this.id,
+        email: this.email,
         username: this.username,
       };
       const secret = "apayaaa";
