@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import MyProfile from "./pages/MyProfile";
 import Register from "./pages/Register";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
         </Routes>
       </div>
     </BrowserRouter>

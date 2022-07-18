@@ -38,7 +38,7 @@ export default function MyProfile() {
             <div className="container p-4">
               <h2 className="text-center">YOUR PROFILE</h2>
               <br />
-              <div className="info">
+              <div>
                 <h5>Email:</h5>
                 <p>email.com</p>
                 <h5>Username:</h5>
@@ -55,9 +55,11 @@ export default function MyProfile() {
                 <h5>City:</h5>
                 <p>zimbabwe</p>
               </div>
-              <Button type="submit" className={style.loginButton}>
-                Edit
-              </Button>
+              <div className="row justify-content-center mt-3">
+                <Button type="submit" className={style.loginButton}>
+                  Edit
+                </Button>
+              </div>
             </div>
           </div>
         </div>
