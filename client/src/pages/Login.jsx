@@ -1,15 +1,17 @@
 import {Form, Button} from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import style from "../pages/Login.module.css";
 
 function Login() {
-    const navigate = useNavigate();
+    function back() {
+        window.history.back()
+    }
     return (
     <div>
         <div className={style.back}>
-            <img src="/back-button.png" alt="back" style={{width: "3rem"}} onClick={() => navigate(-1)} />
+            <img src="/back-button.png" alt="back" style={{width: "3rem"}} onClick={back} />
             <span>
-                <button onClick={() => navigate(-1)}>BACK</button>
+                <button onClick={back}>BACK</button>
             </span>
         </div>
         <div className="row pt-3 justify-content-center">
