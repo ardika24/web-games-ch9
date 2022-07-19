@@ -11,14 +11,13 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    console.log(req.body);
-    const user = await User.authenticate(req.body);
-    const { id, username } = user;
-    res.json({
-      id,
-      username,
-      accessToken: user.generateToken(),
-    });
+    try {
+      const user = await User.authenticate(req.body);
+      const { id, username } = user;
+      res.json({ id, username, accessToken: user.generateToken() });
+    } catch (err) {
+      res.json(err);
+    }
   },
 
   whoami: (req, res) => {

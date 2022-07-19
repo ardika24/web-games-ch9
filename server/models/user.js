@@ -1,6 +1,6 @@
 "use strict";
-const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 module.exports = (sequelize, DataTypes) => {
@@ -29,20 +29,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     };
 
-    verifyPassword = (password) => bcrypt.compareSync(password, this.password);
+    // verifyPassword = (password) => bcrypt.compareSync(password, this.password);
 
-    static authenticate = async ({ username, password }) => {
+    static async authenticate({ username, password }) {
       try {
-        console.log(username, password);
         const user = await this.findOne({ where: { username } });
-        if (!user) return Promise.reject("User not Found");
-        if (!user.verifyPassword(password))
-          return Promise.reject("Wrong Password or Email");
+        if (!user) return Promise.reject("Username Not Found!");
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) return Promise.reject("Wrong password!");
         return Promise.resolve(user);
       } catch (err) {
         return Promise.reject(err);
       }
-    };
+    }
 
     generateToken = () => {
       const playload = {
