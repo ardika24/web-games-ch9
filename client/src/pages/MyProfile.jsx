@@ -1,10 +1,12 @@
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import style from "../pages/MyProfile.module.css";
 
 export default function MyProfile() {
   function back() {
     window.history.back();
   }
+  const navigate = useNavigate();
   return (
     <div className="container-fluid">
       <div className={style.back}>
@@ -56,7 +58,11 @@ export default function MyProfile() {
                 <p>zimbabwe</p>
               </div>
               <div className="row justify-content-center mt-3">
-                <Button type="submit" className={style.loginButton}>
+                <Button
+                  type="submit"
+                  className={style.loginButton}
+                  onClick={() => navigate("/edit-profile")}
+                >
                   Edit
                 </Button>
               </div>
