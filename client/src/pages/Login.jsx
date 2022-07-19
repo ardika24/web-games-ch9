@@ -19,7 +19,7 @@ function Login() {
                 <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
                 <Form className="d-grid">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email or Username</Form.Label>
+                        <Form.Label>Username</Form.Label>
                         <Form.Control type="email" placeholder="Enter email or username" />
                     </Form.Group>
 
