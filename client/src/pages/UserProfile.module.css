@@ -1,0 +1,40 @@
+.header {
+    background-color: #6c7af3;
+    opacity: 50%;
+}
+
+.back {
+    position: absolute;
+    z-index: 2;
+    font-weight: 700;
+    display: flex;
+    margin-left: 18em;
+    margin-top: 1em;
+}
+
+.back span {
+    margin: auto;
+    margin-left: 0.1em;
+    font-size: 1.5em;
+}
+
+.back span button {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    color: #ffffff;
+    transition: 300ms;
+}
+
+.back span button:hover {
+    color: #000000;
+}
+
+.back img {
+    cursor: pointer;
+}
+
+.right {
+    background-color: #4d7bf1;
+    border-radius: 2rem;
+}
