@@ -7,6 +7,7 @@ import EditProfile from "./pages/EditProfile";
 import HomePage from "./pages/HomePage";
 import UserProfile from "./pages/UserProfile";
 import GameList from "./pages/GameList";
+import GameDetail from "./pages/GameDetail";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/game-list" element={<GameList />} />
+          <Route path="/game-detail" element={<GameDetail />} />
+          
         </Routes>
       </div>
     </BrowserRouter>
