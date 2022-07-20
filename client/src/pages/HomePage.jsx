@@ -16,7 +16,7 @@ function HomePage() {
           <Navbar.Brand href="/">
             <img
               style={{ width: "11rem" }}
-              src="/logo-social2.png"
+              src="/logo-social1.png"
               alt="logo"
             />
           </Navbar.Brand>
