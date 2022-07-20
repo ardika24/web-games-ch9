@@ -8,7 +8,7 @@ import {
   Card,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import style from "../pages/GameList.module.css";
+import style from "./css/GameList.module.css";
 
 export default function GameList() {
   function back() {
@@ -65,7 +65,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rockpaperscissor")}
+                          onClick={() => navigate("/rock-paper-scissor")}
                           className="opacity-75"
                         >
                           Play Now!
@@ -89,7 +89,7 @@ export default function GameList() {
                   <div></div>
                   <Button
                     type="submit"
-                    onClick={() => navigate("/rockpaperscissor")}
+                    onClick={() => navigate("/rock-paper-scissor")}
                   >
                     Play Now!
                   </Button>

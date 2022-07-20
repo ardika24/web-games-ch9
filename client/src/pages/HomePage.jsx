@@ -1,8 +1,10 @@
-import style from "../pages/HomePage.module.css";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import style from "./css/HomePage.module.css";
 
 function HomePage() {
+  const navigate = useNavigate();
+
   return (
     <div className={style.home}>
       <Navbar
@@ -26,7 +28,7 @@ function HomePage() {
             className="justify-content-end fs-3"
           >
             <Nav>
-              <Nav.Link as={NavLink} to="/gameslist" className="text-dark">
+              <Nav.Link as={NavLink} to="/game-list" className="text-dark">
                 ALL GAMES
               </Nav.Link>
               <Nav.Link as={NavLink} to="/my-profile" className="text-dark">
@@ -59,7 +61,11 @@ function HomePage() {
             </div>
 
             <div className="row justify-content-center mt-4">
-              <Button type="submit" className={style.loginButton}>
+              <Button
+                type="submit"
+                className={style.loginButton}
+                onClick={() => navigate("/game-list")}
+              >
                 Play!
               </Button>
             </div>
