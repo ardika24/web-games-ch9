@@ -1,5 +1,5 @@
 import { Button, Form, Col, InputGroup } from "react-bootstrap";
-import style from "../pages/EditProfile.module.css";
+import style from "./css/EditProfile.module.css";
 
 export default function MyProfile() {
   function back() {

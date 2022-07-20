@@ -1,5 +1,5 @@
 import { Navbar, Container } from "react-bootstrap";
-import style from "../pages/UserProfile.module.css";
+import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
   function back() {

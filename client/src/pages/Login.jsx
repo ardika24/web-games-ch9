@@ -1,6 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import style from "../pages/Login.module.css";
+import style from "./css/Login.module.css";
 
 function Login() {
   function back() {

@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import style from "../pages/MyProfile.module.css";
+import style from "./css/MyProfile.module.css";
 
 export default function MyProfile() {
   function back() {

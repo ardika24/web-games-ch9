@@ -1,6 +1,6 @@
 import { Navbar, Container, Button, Table } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import style from "../pages/GameDetail.module.css"
+import { useNavigate, Link } from "react-router-dom";
+import style from "./css/GameDetail.module.css";
 
 export default function GameDetail() {
     function back() {
@@ -48,7 +48,7 @@ export default function GameDetail() {
                         <img src="/rockpaperscissor.jpg" alt="rps" />
                     <Button 
                     type="button" 
-                    variant="primary" onClick={() => navigate("/rockpaperscissor")} 
+                    variant="primary" onClick={() => navigate("/rock-paper-scissor")} 
                     className={style.loginButton}>
                         PLAY
                     </Button>
@@ -95,7 +95,7 @@ export default function GameDetail() {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><a href="/user-profile">Jokowi</a></td>
+                            <td><Link to="/user-profile">Jokowi</Link></td>
                             <td>99999</td>
                         </tr>
 
