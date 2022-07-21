@@ -111,10 +111,10 @@ export default function RockPaperScissor() {
 
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
         <div className="col">
-          <h1>Username</h1>
+          <h3>Username</h3>
         </div>
         <div className="col">
-          <h1>COM</h1>
+          <h3>COM</h3>
         </div>
       </div>
 
@@ -123,7 +123,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "11rem",
+                width: "10rem",
                 cursor: "pointer",
                 transform: uRockIsActive ? "rotate(90deg)" : "",
                 transition: "300ms",
@@ -136,7 +136,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "9rem",
+                width: "8rem",
                 cursor: "pointer",
                 transform: uPaperIsActive ? "rotate(90deg)" : "",
                 transition: "300ms",
@@ -149,7 +149,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "11rem",
+                width: "10rem",
                 cursor: "pointer",
                 transform: uScissorIsActive ? "rotate(90deg)" : "",
                 transition: "300ms",
@@ -167,7 +167,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "11rem",
+                width: "10rem",
                 transform: comRockIsActive ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}
@@ -178,7 +178,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "9rem",
+                width: "8rem",
                 transform: comPaperIsActive ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}
@@ -189,7 +189,7 @@ export default function RockPaperScissor() {
           <div className="row justify-content-center p-3">
             <img
               style={{
-                width: "11rem",
+                width: "10rem",
                 transform: comScissorIsActive ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}

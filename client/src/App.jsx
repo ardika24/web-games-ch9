@@ -23,8 +23,11 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/game-list" element={<GameList />} />
-          <Route path="/game-detail" element={<GameDetail />} />          
-          <Route path="/rock-paper-scissor" element={<RockPaperScissor />} />
+          <Route path="/rock-paper-scissor" element={<GameDetail />} />
+          <Route
+            path="/rock-paper-scissor/play"
+            element={<RockPaperScissor />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

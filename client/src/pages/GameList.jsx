@@ -121,7 +121,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rockpaperscissor")}
+                          onClick={() => navigate("/rock-paper-scissor")}
                           className="opacity-75"
                         >
                           Play Now!
@@ -152,7 +152,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rockpaperscissor")}
+                          onClick={() => navigate("/rock-paper-scissor")}
                           className="opacity-75"
                         >
                           Play Now!
@@ -175,7 +175,7 @@ export default function GameList() {
                 <Carousel.Caption className="text-dark fs-4">
                   <Button
                     type="submit"
-                    onClick={() => navigate("/rockpaperscissor")}
+                    onClick={() => navigate("/rock-paper-scissor")}
                   >
                     Play Now!
                   </Button>
@@ -207,7 +207,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rockpaperscissor")}
+                          onClick={() => navigate("/rock-paper-scissor")}
                           className="opacity-75"
                         >
                           Play Now!
