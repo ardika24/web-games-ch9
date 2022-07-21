@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import style from "./RockPaperScissor.module.css";
 
@@ -33,48 +33,56 @@ export default function RockPaperScissor() {
     }
   }
 
-  function output() {
-    if (uRockIsActive === true && comPaperIsActive === true)
-      setResult("You Lose!");
-    if (uRockIsActive === true && comScissorIsActive === true)
-      setResult("You Win!");
-    if (uRockIsActive === true && comRockIsActive === true) setResult("Draw!");
+  useEffect(() => {
+    function output() {
+      if (uRockIsActive === true && comPaperIsActive === true)
+        setResult("You Lose!");
+      if (uRockIsActive === true && comScissorIsActive === true)
+        setResult("You Win!");
+      if (uRockIsActive === true && comRockIsActive === true)
+        setResult("Draw!");
 
-    if (uPaperIsActive === true && comPaperIsActive === true)
-      setResult("Draw!");
-    if (uPaperIsActive === true && comScissorIsActive === true)
-      setResult("You Lose!");
-    if (uPaperIsActive === true && comRockIsActive === true)
-      setResult("You Win!");
+      if (uPaperIsActive === true && comPaperIsActive === true)
+        setResult("Draw!");
+      if (uPaperIsActive === true && comScissorIsActive === true)
+        setResult("You Lose!");
+      if (uPaperIsActive === true && comRockIsActive === true)
+        setResult("You Win!");
 
-    if (uScissorIsActive === true && comPaperIsActive === true)
-      setResult("You Win!");
-    if (uScissorIsActive === true && comScissorIsActive === true)
-      setResult("Draw!");
-    if (uScissorIsActive === true && comRockIsActive === true)
-      setResult("You Lose!");
-  }
+      if (uScissorIsActive === true && comPaperIsActive === true)
+        setResult("You Win!");
+      if (uScissorIsActive === true && comScissorIsActive === true)
+        setResult("Draw!");
+      if (uScissorIsActive === true && comRockIsActive === true)
+        setResult("You Lose!");
+    }
+    output();
+  }, [
+    comPaperIsActive,
+    comRockIsActive,
+    comScissorIsActive,
+    uPaperIsActive,
+    uRockIsActive,
+    uScissorIsActive,
+  ]);
 
   const handleURockClick = () => {
     setURockIsActive(true);
     setUPaperIsActive(false);
     setUScissorIsActive(false);
     comChoice();
-    output();
   };
   const handleUPaperClick = () => {
     setUPaperIsActive(true);
     setURockIsActive(false);
     setUScissorIsActive(false);
     comChoice();
-    output();
   };
   const handleUScissorClick = () => {
     setUScissorIsActive(true);
     setUPaperIsActive(false);
     setURockIsActive(false);
     comChoice();
-    output();
   };
 
   return (
