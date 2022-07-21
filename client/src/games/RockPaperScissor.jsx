@@ -71,18 +71,45 @@ export default function RockPaperScissor() {
     setUPaperIsActive(false);
     setUScissorIsActive(false);
     comChoice();
+    setTimeout(() => {
+      setURockIsActive(false);
+      setUPaperIsActive(false);
+      setUScissorIsActive(false);
+      setComRockIsActive(false);
+      setComPaperIsActive(false);
+      setComScissorIsActive(false);
+      setResult("");
+    }, 800);
   };
   const handleUPaperClick = () => {
     setUPaperIsActive(true);
     setURockIsActive(false);
     setUScissorIsActive(false);
     comChoice();
+    setTimeout(() => {
+      setURockIsActive(false);
+      setUPaperIsActive(false);
+      setUScissorIsActive(false);
+      setComRockIsActive(false);
+      setComPaperIsActive(false);
+      setComScissorIsActive(false);
+      setResult("");
+    }, 800);
   };
   const handleUScissorClick = () => {
     setUScissorIsActive(true);
     setUPaperIsActive(false);
     setURockIsActive(false);
     comChoice();
+    setTimeout(() => {
+      setURockIsActive(false);
+      setUPaperIsActive(false);
+      setUScissorIsActive(false);
+      setComRockIsActive(false);
+      setComPaperIsActive(false);
+      setComScissorIsActive(false);
+      setResult("");
+    }, 800);
   };
 
   return (
