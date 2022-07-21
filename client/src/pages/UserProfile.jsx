@@ -1,3 +1,4 @@
+import { Navbar, Container } from "react-bootstrap";
 import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
@@ -6,34 +7,39 @@ export default function UserProfile() {
   }
   return (
     <div>
-      <div className={style.header}>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-8">
-              <img
-                style={{ width: "11rem" }}
-                src="/logo-social2.png"
-                alt="logo"
-              />
-            </div>
-            <div className="col-4">
-              <div className={style.back}>
-                <img
-                  src="/back-button.png"
-                  alt="back"
-                  style={{ width: "3rem" }}
-                  onClick={back}
-                />
-                <span>
-                  <button onClick={back}>BACK</button>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Navbar
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        fixed="top"
+        className="opacity-50"
+      >
+        <Container>
+          <Navbar.Brand href="/">
+            <img
+              style={{ width: "11rem" }}
+              src="/logo-social1.png"
+              alt="logo"
+            />
+          </Navbar.Brand>
+          <Navbar.Brand className="justify-content-end">
+            <img
+              src="/back-button.png"
+              alt="back"
+              style={{ width: "3rem" }}
+              onClick={back}
+              className={style.back}
+            />
+            <span className={style.span}>
+              <button onClick={back}>BACK</button>
+            </span>
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
 
-      <div className="row pt-5 justify-content-center">
+      <div className={style.content}>
+
+      <div className="row justify-content-center">
         <div className="col-lg-6 col-sm-7 px-sm-3 d-flex flex-column justify-content-center text-light">
           <div className={style.right}>
             <div className="container p-5">
@@ -54,6 +60,8 @@ export default function UserProfile() {
             </div>
           </div>
         </div>
+      </div>
+
       </div>
     </div>
   );

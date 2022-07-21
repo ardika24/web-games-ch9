@@ -7,6 +7,7 @@ import EditProfile from "./pages/EditProfile";
 import HomePage from "./pages/HomePage";
 import UserProfile from "./pages/UserProfile";
 import GameList from "./pages/GameList";
+import GameDetail from "./pages/GameDetail";
 import RockPaperScissor from "./games/RockPaperScissor";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/game-list" element={<GameList />} />
+          <Route path="/game-detail" element={<GameDetail />} />          
           <Route path="/rock-paper-scissor" element={<RockPaperScissor />} />
         </Routes>
       </div>
