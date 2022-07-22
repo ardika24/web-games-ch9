@@ -1,23 +1,66 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
 function Header() {
-    return ( 
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" className="opacity-50">
+  const { user, logout } = useAuth();
+
+  function jsx_rightSection() {
+    if (user === null) {
+      return <Navbar.Text>Loading User...</Navbar.Text>;
+    }
+
+    if (user === false) {
+      return (
+      <Nav>
+        <Nav.Link as={NavLink} to="/login">
+          Login
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/register">
+          Register
+        </Nav.Link>
+      </Nav>
+      );
+    }
+
+    return (
+      <Nav>
+        <Nav.Link as={NavLink} to="/game-list">
+          All Games
+        </Nav.Link>
+         <Navbar.Text>{user.username}</Navbar.Text>
+        <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
+      </Nav>
+    );
+  }
+
+  return (
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      fixed="top"
+      className="opacity-50"
+    >
       <Container>
-        <Navbar.Brand href="#home"><img style={{width: "11rem"}} src="/logo-social1.png" alt="logo"/></Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img style={{ width: "11rem" }} src="/logo-social1.png" alt="logo" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end fs-3">
+        <Navbar.Collapse
+          id="responsive-navbar-nav"
+          className="justify-content-end fs-3"
+        >            
           <Nav>
-            <Nav.Link as={NavLink} to="/login" className="text-light">Login</Nav.Link>
-            <Nav.Link as={NavLink} to="/register" className="text-light">
-              Register
-            </Nav.Link>
-          </Nav>
+        
+      {jsx_rightSection()}
+      </Nav>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    );
+  );
 }
 
 export default Header;

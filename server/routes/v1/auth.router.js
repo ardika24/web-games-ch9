@@ -5,6 +5,8 @@ authRouter.get("/", (_, res) => {
   res.send("from auth");
 });
 
+// @ /api/v1/auth
+
 // Middlewares
 const restrict = require("../../middlewares/restrict");
 

@@ -8,8 +8,8 @@ const options = {
 };
 
 passport.use(
-  new JwtStrategy(options, async (playload, done) => {
-    User.findByPk(playload.id)
+  new JwtStrategy(options, async (payload, done) => {
+    User.findByPk(payload.id)
       .then((user) => done(null, user))
       .catch((err) => done(err, false));
   })
