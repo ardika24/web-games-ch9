@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navbar, Container } from "react-bootstrap";
 import style from "./RockPaperScissor.module.css";
 
@@ -15,6 +15,10 @@ export default function RockPaperScissor() {
   const [comScissorIsActive, setComScissorIsActive] = useState(false);
 
   const [result, setResult] = useState("");
+
+  const winScore = useRef(null);
+  const score = useRef(null);
+  const hasil = useRef(null);
 
   function comChoice() {
     let com = Math.random();
@@ -65,6 +69,24 @@ export default function RockPaperScissor() {
     uRockIsActive,
     uScissorIsActive,
   ]);
+
+  useEffect(() => {
+    function win() {
+      if (winScore.current.textContent === "You Win!") {
+        score.current += 1;
+        hasil.current.textContent = `${score.current}`;
+      }
+
+      if (
+        winScore.current.textContent === "You Lose!" ||
+        winScore.current.textContent === "Draw!"
+      ) {
+        score.current = 0;
+        hasil.current.textContent = "0";
+      }
+    }
+    win();
+  }, [result]);
 
   const handleURockClick = () => {
     setURockIsActive(true);
@@ -153,6 +175,14 @@ export default function RockPaperScissor() {
         </div>
       </div>
 
+      <div className="row text-center text-light">
+        <div className="col">
+          <h3>
+            Win Streak: <span ref={hasil}></span>
+          </h3>
+        </div>
+      </div>
+
       <div className="row align-items-center">
         <div className="col">
           <div className="row justify-content-center p-3">
@@ -196,7 +226,9 @@ export default function RockPaperScissor() {
           </div>
         </div>
         <div className="col-1">
-          <h1 className="text-center text-light">{result ? result : "VS"}</h1>
+          <h1 className="text-center text-light" ref={winScore}>
+            {result ? result : "VS"}
+          </h1>
         </div>
         <div className="col">
           <div className="row justify-content-center p-3">
