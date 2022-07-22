@@ -178,7 +178,7 @@ export default function RockPaperScissor() {
       <div className="row text-center text-light">
         <div className="col">
           <h3>
-            Win Streak: <span ref={hasil}></span>
+            Win Streak: <span ref={hasil}>0</span>
           </h3>
         </div>
       </div>
