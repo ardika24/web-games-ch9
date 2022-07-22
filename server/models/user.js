@@ -29,31 +29,38 @@ module.exports = (sequelize, DataTypes) => {
       }
     };
 
-    // verifyPassword = (password) => bcrypt.compareSync(password, this.password);
-
     static async authenticate({ username, password }) {
       try {
         const user = await this.findOne({ where: { username } });
-        if (!user) return Promise.reject("Username Not Found!");
+        if (!user) {
+          return Promise.reject({
+            message: "User not Found!",
+            code: "auth/user-not-found",
+          });
+        }
+
         const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) return Promise.reject("Wrong password!");
+        if (!isPasswordValid) {
+          return Promise.reject({
+            message: "Wrong password",
+            code: "auth/user-not-found",
+          });
+        }
         return Promise.resolve(user);
       } catch (err) {
         return Promise.reject(err);
       }
     }
 
-    generateToken = () => {
-      const playload = {
+    generateToken() {
+      const payload = {
         id: this.id,
-        email: this.email,
         username: this.username,
       };
-      const secret = "apayaaa";
-
-      const token = jwt.sign(playload, secret);
+      const secret = "this-secret-information";
+      const token = jwt.sign(payload, secret);
       return token;
-    };
+    }
   }
   User.init(
     {

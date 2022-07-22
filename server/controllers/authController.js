@@ -4,9 +4,15 @@ module.exports = {
   register: async (req, res) => {
     try {
       const user = await User.registerUser(req.body);
-      res.json(user);
-    } catch (err) {
-      res.json({ error: err.message });
+      const { id, email, username } = user;
+      res.json({
+        id,
+        email,
+        username,
+        accessToken: user.generateToken(),
+      });
+    } catch (error) {
+      res.status(400).json({ error });
     }
   },
 
@@ -16,12 +22,12 @@ module.exports = {
       const { id, username } = user;
       res.json({ id, username, accessToken: user.generateToken() });
     } catch (err) {
-      res.json(err);
+      res.status(400).json({ err });
     }
   },
 
   whoami: (req, res) => {
-    const currentUser = req.user;
+    const { password, ...currentUser } = req.user.dataValues;
     res.json(currentUser);
   },
 };
