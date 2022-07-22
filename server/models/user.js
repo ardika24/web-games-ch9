@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
         id: this.id,
         username: this.username,
       };
-      const secret = "this-secret-information";
+      const secret = "apayaaa";
       const token = jwt.sign(payload, secret);
       return token;
     }

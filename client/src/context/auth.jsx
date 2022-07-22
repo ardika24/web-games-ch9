@@ -1,7 +1,7 @@
 import { createContext, useState, useContext, useEffect } from "react";
 
 // Key to save access token on localStorage
-const KEY_ACCESS_TOKEN = "this-secret-information";
+const KEY_ACCESS_TOKEN = "accessToken";
 
 const authContext = createContext();
 

@@ -5,12 +5,13 @@ import { useAuth } from "../context/auth";
 function Header() {
   const { user, logout } = useAuth();
 
-  function jsx_buttonLogout() {
+  function jsx_rightSection() {
     if (user === null) {
       return <Navbar.Text>Loading User...</Navbar.Text>;
     }
 
     if (user === false) {
+      return (
       <Nav>
         <Nav.Link as={NavLink} to="/login">
           Login
@@ -18,12 +19,17 @@ function Header() {
         <Nav.Link as={NavLink} to="/register">
           Register
         </Nav.Link>
-      </Nav>;
+      </Nav>
+      );
     }
 
     return (
       <Nav>
-        <Nav.Link onClick={logout}>Logout</Nav.Link>
+        <Nav.Link as={NavLink} to="/game-list">
+          All Games
+        </Nav.Link>
+         <Navbar.Text>{user.username}</Navbar.Text>
+        <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
       </Nav>
     );
   }
@@ -38,15 +44,19 @@ function Header() {
       className="opacity-50"
     >
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img style={{ width: "11rem" }} src="/logo-social1.png" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse
           id="responsive-navbar-nav"
           className="justify-content-end fs-3"
-        >
-          <Nav>{jsx_buttonLogout()}</Nav>
+        >            
+          <Nav>
+        
+      {jsx_rightSection()}
+      </Nav>
+
         </Navbar.Collapse>
       </Container>
     </Navbar>

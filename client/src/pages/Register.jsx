@@ -22,7 +22,7 @@ function Register() {
 
     const response = await fetch("http://localhost:4000/api/v1/auth/register", {
       method: "POST",
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, username, password }),
       headers: new Headers({
         "Content-Type": "application/json",
       }),
@@ -32,7 +32,7 @@ function Register() {
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
-      navigate("/");
+      navigate("/login");
     } else {
       const data = await response.json();
       if (data && data.error) {
