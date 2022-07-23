@@ -13,19 +13,40 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-    static #encrypt = (password) => bcrypt.hashSync(password, 10);
+    // static #encrypt = (password) => bcrypt.hashSync(password, 10);
 
-    static registerUser = async ({ email, username, password }) => {
+    static async register({ email, username, password }) {
+      if (!email || !username || !password) {
+        return Promise.reject({
+          message: "Data invalid",
+          code: "auth/register-invalid",
+        });
+      }
+
       try {
-        const user = await this.findOne({ where: { username } });
-        if (user) throw "Username already exist";
-        return this.create({
+        const encryptedPassword = await bcrypt.hash(password, 10);
+        const user = await this.create({ 
           email,
           username,
-          password: this.#encrypt(password),
+          password: encryptedPassword,
         });
-      } catch (err) {
-        throw new Error(err);
+        return Promise.resolve(user);
+
+        // if (user) throw "Username already exist";
+        // return this.create({
+        //   email,
+        //   username,
+        //   password: this.#encrypt(password),
+        // });
+      } catch (error) {
+        if (error.name === "SequelizeUniqueConstraintError") {
+          return Promise.reject({
+            message: "User already exist",
+            code: "auth/user-exist",
+          });
+        }
+
+        return Promise.reject(error);
       }
     };
 

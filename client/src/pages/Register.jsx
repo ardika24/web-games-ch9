@@ -24,27 +24,27 @@ function Register() {
       method: "POST",
       body: JSON.stringify({ email, username, password }),
       headers: new Headers({
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       }),
     });
 
     setLoading(false);
+    
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
-      navigate("/login");
+      navigate("/");
     } else {
       const data = await response.json();
       if (data && data.error) {
-        if (data && data.error) {
-          if (data.error.code === "auth/user-exist") {
-            alert("User already exist, please login");
-            navigate("/login");
-          }
+        if (data.error.code === "auth/user-exist") {
+          alert("User already exist, please login");
+          navigate("/login");
         }
       }
     }
   }
+
   function back() {
     window.history.back();
   }
@@ -70,7 +70,7 @@ function Register() {
             REGISTER FOR YOUR ACCOUNT
           </h2>
           <Form className="d-grid" onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -81,24 +81,24 @@ function Register() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
-                type="text"
+                type="username"
                 placeholder="Enter Username"
                 value={username}
-                onChange={(event) => setUsername(event.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Enter Password"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </Form.Group>

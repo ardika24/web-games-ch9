@@ -23,7 +23,7 @@ function Login() {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: new Headers({
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       }),
     });
 
@@ -37,10 +37,10 @@ function Login() {
       const data = await response.json();
       if (data && data.error) {
         if (
-          data.error === "auth/user-not-found" ||
-          data.error === "auth/user-not-found"
+          data.error.code === "auth/user-not-found" ||
+          data.error.code === "auth/wrong-password"
         ) {
-          alert("Invalid username or password");
+          alert("Invalid username or password!");
         }
       }
     }
@@ -68,24 +68,24 @@ function Login() {
         >
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
           <Form className="d-grid" onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
-                type="username"
-                placeholder="Enter email or username"
+                type="text"
+                placeholder="Enter username"
                 value={username}
-                onChange={(event) => setUsername(event.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </Form.Group>

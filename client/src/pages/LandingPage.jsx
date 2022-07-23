@@ -1,5 +1,6 @@
 import "./css/LandingPage.css";
 import Header from "../components/Header";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
@@ -13,13 +14,13 @@ function LandingPage() {
           <br />
           <h1>PLEASE LOGIN TO PLAY!</h1>
 
-          <button
-            type="button"
-            class="btn btn-lg btn-primary"
+          <Button
+            variant="primary"
+            type="submit"
             onClick={() => navigate("/game-list")}
           >
             PLAY NOW!
-          </button>
+          </Button>
         </div>
       </div>
     </>

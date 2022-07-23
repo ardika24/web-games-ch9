@@ -144,7 +144,7 @@ export default function RockPaperScissor() {
         className="opacity-50"
       >
         <Container>
-          <Navbar.Brand href="/landing-page">
+          <Navbar.Brand href="/">
             <img
               style={{ width: "11rem" }}
               src="/logo-social1.png"
