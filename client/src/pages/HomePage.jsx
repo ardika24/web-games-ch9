@@ -43,6 +43,7 @@ function HomePage() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      
       <div className="container-fluid">
         <div className="row pt-5">
           <div className="col-lg text-center text-dark">
