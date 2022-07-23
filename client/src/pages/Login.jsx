@@ -32,7 +32,7 @@ function Login() {
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
-      navigate("/");
+      navigate("/home");
     } else {
       const data = await response.json();
       if (data && data.error) {

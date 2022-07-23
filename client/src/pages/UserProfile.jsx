@@ -1,41 +1,10 @@
-import { Navbar, Container } from "react-bootstrap";
+import Header from "../components/Header";
 import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
-  function back() {
-    window.history.back();
-  }
   return (
     <div>
-      <Navbar
-        expand="lg"
-        bg="dark"
-        variant="dark"
-        fixed="top"
-        className="opacity-50"
-      >
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              style={{ width: "11rem" }}
-              src="/logo-social1.png"
-              alt="logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Brand className="justify-content-end">
-            <img
-              src="/back-button.png"
-              alt="back"
-              style={{ width: "3rem" }}
-              onClick={back}
-              className={style.back}
-            />
-            <span className={style.span}>
-              <button onClick={back}>BACK</button>
-            </span>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Header />
 
       <div className={style.content}>
 

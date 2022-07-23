@@ -1,6 +1,4 @@
 import {
-  Navbar,
-  Container,
   Carousel,
   Button,
   Col,
@@ -8,46 +6,15 @@ import {
   Card,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 import style from "./css/GameList.module.css";
 
 export default function GameList() {
-  function back() {
-    window.history.back();
-  }
-
   const navigate = useNavigate();
 
   return (
     <div className={style.home}>
-      <Navbar
-        expand="lg"
-        bg="dark"
-        variant="dark"
-        fixed="top"
-        className="opacity-50"
-      >
-        <Container>
-          <Navbar.Brand href="/landing-page">
-            <img
-              style={{ width: "11rem" }}
-              src="/logo-social1.png"
-              alt="logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Brand className="justify-content-end">
-            <img
-              src="/back-button.png"
-              alt="back"
-              style={{ width: "3rem" }}
-              onClick={back}
-              className={style.back}
-            />
-            <span className={style.span}>
-              <button onClick={back}>BACK</button>
-            </span>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Header />
 
       <div className="container-fluid pt-5 text-center">
         <br />
