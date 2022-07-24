@@ -5,6 +5,8 @@ module.exports = {
     try {
       const highScore = await User.findAll({
         attributes: [
+          "id",
+          "username",
           [sequelize.fn("max", sequelize.col("total_score")), "highScore"],
         ],
         group: ["username", "total_score"],

@@ -5,7 +5,7 @@ gameRouter.get("/", (_, res) => {
   res.send("from game");
 });
 
-// @ /api/v1/game
+// @ /api/v1/games
 gameRouter.get("/high-score", GameController.getHighScore);
 
 module.exports = gameRouter;
