@@ -1,23 +1,11 @@
 import { Button, Form, Col, InputGroup } from "react-bootstrap";
 import style from "./css/EditProfile.module.css";
+import { useAuth } from "../context/auth";
 
 export default function MyProfile() {
-  function back() {
-    window.history.back();
-  }
+  const { user } = useAuth();
   return (
-    <div className="container-fluid">
-      <div className={style.back}>
-        <img
-          src="/back-button.png"
-          alt="back"
-          style={{ width: "3rem" }}
-          onClick={back}
-        />
-        <span>
-          <button onClick={back}>BACK</button>
-        </span>
-      </div>
+    <div className={`${style.container} container-fluid`}>
       <div className="row pt-5">
         <div className="col-lg-5">
           <div className="left text-light">
@@ -42,7 +30,7 @@ export default function MyProfile() {
               <div className="row justify-content-center">
                 <Form.Group as={Col} md="7" controlId="username">
                   <Form.Label>Username</Form.Label>
-                  <Form.Control required type="text" placeholder="username" />
+                  <Form.Control required type="text" value={user.username} />
                 </Form.Group>
 
                 <Form.Group
@@ -56,19 +44,16 @@ export default function MyProfile() {
                     <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                     <Form.Control
                       type="text"
-                      placeholder="twitter"
+                      value={user.social_media_url}
                       aria-describedby="inputGroupPrepend"
                       required
                     />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a username.
-                    </Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
 
                 <Form.Group as={Col} md="7" controlId="city" className="mt-3">
                   <Form.Label>City</Form.Label>
-                  <Form.Control type="text" placeholder="City" required />
+                  <Form.Control type="text" value={user.city} required />
                   <Form.Control.Feedback type="invalid">
                     Please provide a valid city.
                   </Form.Control.Feedback>
@@ -79,7 +64,7 @@ export default function MyProfile() {
                   <Form.Control
                     as="textarea"
                     rows={4}
-                    placeholder="Bio"
+                    value={user.bio}
                     required
                   />
                   <Form.Control.Feedback type="invalid">

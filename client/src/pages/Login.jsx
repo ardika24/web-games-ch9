@@ -27,7 +27,6 @@ function Login() {
       }),
     });
 
-    // const data = await response.json();
     setLoading(false);
 
     if (response.ok) {
@@ -45,14 +44,9 @@ function Login() {
         }
       }
     }
-    // console.log(data);
   }
-  // function back() {
-  //   window.history.back();
-  // }
-
   return (
-    <div>
+    <div className={style.container}>
       <div className="row pt-3 justify-content-center">
         <div
           className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"

@@ -1,6 +1,5 @@
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import Header from "../components/Header";
 import style from "./css/GameDetail.module.css";
 
 export default function GameDetail() {
@@ -8,8 +7,6 @@ export default function GameDetail() {
 
   return (
     <div>
-      <Header />
-
       <section className={style.rps}>
         <Row>
           <Col>

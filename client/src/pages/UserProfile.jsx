@@ -1,9 +1,6 @@
 import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
-  // function back() {
-  //   window.history.back();
-  // }
   return (
     <div>
       <div className={style.content}>

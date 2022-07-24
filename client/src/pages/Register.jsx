@@ -37,30 +37,16 @@ function Register() {
     } else {
       const data = await response.json();
       if (data && data.error) {
-        if (data.error.code === "auth/user-exists") {
-          alert("User already exist, please login");
+        if (data.error.code === "auth/user-exist") {
+          alert("Username or email already exist, please login");
           navigate("/login");
         }
       }
     }
   }
 
-  function back() {
-    window.history.back();
-  }
   return (
-    <div>
-      <div className={style.back}>
-        <img
-          src="/back-button.png"
-          alt="back"
-          style={{ width: "3rem" }}
-          onClick={back}
-        />
-        <span>
-          <button onClick={() => back()}>BACK</button>
-        </span>
-      </div>
+    <div className={style.container}>
       <div className="row pt-3 justify-content-center">
         <div
           className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
@@ -111,8 +97,11 @@ function Register() {
               {loading ? "Loading..." : "Register"}
             </Button>
           </Form>
+          <p className={style.p2}>
+            *if success, you’ll be redirected to the Log in page
+          </p>
           <p>
-            Already have an account?
+            Already have an account?{" "}
             <Link to="/login" className="text-light text-center">
               Log in here
             </Link>

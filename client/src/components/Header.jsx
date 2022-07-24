@@ -7,7 +7,11 @@ function Header() {
 
   function jsx_rightSection() {
     if (user === null) {
-      return <Navbar.Text>Loading User...</Navbar.Text>;
+      return (
+        <Navbar.Text className="text-light text-center fs-3">
+          Loading User...
+        </Navbar.Text>
+      );
     }
 
     if (user === false) {
@@ -33,6 +37,7 @@ function Header() {
         </Nav.Link>
         <Nav.Link as={NavLink} to="/my-profile">
           {user.username}
+          <img style={{ width: "3rem" }} src="/profile1.png" alt="profile" />
         </Nav.Link>
         <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
       </Nav>

@@ -1,25 +1,13 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./css/MyProfile.module.css";
+import { useAuth } from "../context/auth";
 
 export default function MyProfile() {
-  function back() {
-    window.history.back();
-  }
+  const { user } = useAuth();
   const navigate = useNavigate();
   return (
-    <div className="container-fluid">
-      <div className={style.back}>
-        <img
-          src="/back-button.png"
-          alt="back"
-          style={{ width: "3rem" }}
-          onClick={back}
-        />
-        <span>
-          <button onClick={back}>BACK</button>
-        </span>
-      </div>
+    <div className={`${style.container} container-fluid`}>
       <div className="row pt-5">
         <div className="col-lg-5">
           <div className="left text-light">
@@ -42,20 +30,17 @@ export default function MyProfile() {
               <br />
               <div>
                 <h5>Email:</h5>
-                <p>email.com</p>
+                <p>{user.email}</p>
                 <h5>Username:</h5>
-                <p>username</p>
+                <p>{user.username}</p>
                 <h5>Total Score:</h5>
-                <p>1000</p>
+                <p>{user.total_score}</p>
                 <h5>Bio:</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-                  quidem perferendis aliquid cumque blanditiis labore?
-                </p>
+                <p>{user.bio}</p>
                 <h5>Twitter:</h5>
-                <p>@twitter</p>
+                <p>{user.social_media_url}</p>
                 <h5>City:</h5>
-                <p>zimbabwe</p>
+                <p>{user.city}</p>
               </div>
               <div className="row justify-content-center mt-3">
                 <Button

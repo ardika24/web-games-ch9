@@ -1,6 +1,5 @@
 import { Carousel, Button, Col, Row, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import style from "./css/GameList.module.css";
 
 export default function GameList() {
@@ -8,8 +7,6 @@ export default function GameList() {
 
   return (
     <div className={style.home}>
-      <Header />
-
       <div className="container-fluid pt-5 text-center">
         <br />
         <br />
