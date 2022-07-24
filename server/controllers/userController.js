@@ -115,8 +115,8 @@ class UserController {
           message: "Failed to update",
         });
       }
-    } catch (err) {
-      next(err);
+    } catch (error) {
+      res.json({ error });
     }
   }
 

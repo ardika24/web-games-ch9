@@ -2,10 +2,12 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./css/MyProfile.module.css";
 import { useAuth } from "../context/auth";
+import { useEffect } from "react";
 
 export default function MyProfile() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  useEffect(() => {}, [user]);
   return (
     <div className={`${style.container} container-fluid`}>
       <div className="row pt-5">
@@ -37,7 +39,7 @@ export default function MyProfile() {
                 <p>{user.total_score}</p>
                 <h5>Bio:</h5>
                 <p>{user.bio}</p>
-                <h5>Twitter:</h5>
+                <h5>Social Media:</h5>
                 <p>{user.social_media_url}</p>
                 <h5>City:</h5>
                 <p>{user.city}</p>

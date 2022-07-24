@@ -59,6 +59,15 @@ function useProvideAuth() {
     setUser(false);
   }
 
+  async function latestData() {
+    const currentUser = await getCurrentUser();
+    if (currentUser) {
+      setUser(currentUser);
+    } else {
+      setUser(false);
+    }
+  }
+
   useEffect(() => {
     let ignore = false;
 
@@ -86,5 +95,6 @@ function useProvideAuth() {
     user,
     login,
     logout,
+    latestData,
   };
 }

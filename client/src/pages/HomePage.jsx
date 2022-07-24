@@ -11,7 +11,7 @@ function HomePage() {
         <div className="row pt-5">
           <div className="col-lg text-center text-dark">
             <div className={style.text}>
-              <h1>Hello there username!</h1>
+              <h1>Hello there!</h1>
               <br />
               <h3>Welcome to the Games, where you can play</h3>
               <h3>many games on the list.</h3>
