@@ -1,5 +1,5 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import style from "./css/HomePage.module.css";
 
 function HomePage() {
@@ -7,42 +7,6 @@ function HomePage() {
 
   return (
     <div className={style.home}>
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        fixed="top"
-        className="opacity-50"
-        style={{ backgroundColor: "#6C7AF3" }}
-      >
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              style={{ width: "11rem" }}
-              src="/logo-social1.png"
-              alt="logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse
-            id="responsive-navbar-nav"
-            className="justify-content-end fs-3"
-          >
-            <Nav>
-              <Nav.Link as={NavLink} to="/game-list" className="text-dark">
-                ALL GAMES
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/my-profile" className="text-dark">
-                PROFILE
-                <img
-                  style={{ width: "3rem" }}
-                  src="/profile1.png"
-                  alt="profile"
-                />
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
       <div className="container-fluid">
         <div className="row pt-5">
           <div className="col-lg text-center text-dark">

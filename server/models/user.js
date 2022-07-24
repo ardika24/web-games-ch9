@@ -16,16 +16,28 @@ module.exports = (sequelize, DataTypes) => {
     static #encrypt = (password) => bcrypt.hashSync(password, 10);
 
     static registerUser = async ({ email, username, password }) => {
+      if (!email || !username || !password) {
+        return Promise.reject({
+          message: "Data invalid",
+          code: "auth/register-invalid",
+        });
+      }
       try {
-        const user = await this.findOne({ where: { username } });
-        if (user) throw "Username already exist";
-        return this.create({
+        const encryptedPassword = await bcrypt.hash(password, 10);
+        const user = await this.create({
           email,
           username,
-          password: this.#encrypt(password),
+          password: encryptedPassword,
         });
-      } catch (err) {
-        throw new Error(err);
+        return Promise.resolve(user);
+      } catch (error) {
+        if (error.name === "SequelizeUniqueConstraintError") {
+          return Promise.reject({
+            message: "User already exists",
+            code: "auth/user-exists",
+          });
+        }
+        return Promise.reject(error);
       }
     };
 
@@ -43,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
         if (!isPasswordValid) {
           return Promise.reject({
             message: "Wrong password",
-            code: "auth/user-not-found",
+            code: "auth/wrong-password",
           });
         }
         return Promise.resolve(user);

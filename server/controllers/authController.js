@@ -20,9 +20,9 @@ module.exports = {
     try {
       const user = await User.authenticate(req.body);
       const { id, username } = user;
-      res.json({ id, username, accessToken: user.generateToken(), });
-    } catch (err) {
-      res.status(400).json({ err });
+      res.json({ id, username, accessToken: user.generateToken() });
+    } catch (error) {
+      res.status(400).json({ error });
     }
   },
 

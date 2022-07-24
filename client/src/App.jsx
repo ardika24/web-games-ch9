@@ -10,25 +10,67 @@ import GameList from "./pages/GameList";
 import GameDetail from "./pages/GameDetail";
 import RockPaperScissor from "./games/RockPaperScissor";
 import { ProvideAuth } from "./context/auth";
+import RequireAuth from "./components/RequireAuth";
+import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
       <ProvideAuth>
         <div className="App">
+          <Header />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/my-profile" element={<MyProfile />} />
-            <Route path="/edit-profile" element={<EditProfile />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/game-list" element={<GameList />} />
-            <Route path="/rock-paper-scissor" element={<GameDetail />} />
+            <Route
+              path="/my-profile"
+              element={
+                <RequireAuth>
+                  <MyProfile />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/edit-profile"
+              element={
+                <RequireAuth>
+                  <EditProfile />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <RequireAuth>
+                  <HomePage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/user-profile"
+              element={
+                <RequireAuth>
+                  <UserProfile />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/rock-paper-scissor"
+              element={
+                <RequireAuth>
+                  <GameDetail />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/rock-paper-scissor/play"
-              element={<RockPaperScissor />}
+              element={
+                <RequireAuth>
+                  <RockPaperScissor />
+                </RequireAuth>
+              }
             />
           </Routes>
         </div>

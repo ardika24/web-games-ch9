@@ -32,15 +32,13 @@ function Register() {
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
-      navigate("/login");
+      navigate("/home");
     } else {
       const data = await response.json();
       if (data && data.error) {
-        if (data && data.error) {
-          if (data.error.code === "auth/user-exist") {
-            alert("User already exist, please login");
-            navigate("/login");
-          }
+        if (data.error.code === "auth/user-exists") {
+          alert("User already exist, please login");
+          navigate("/login");
         }
       }
     }
@@ -58,7 +56,7 @@ function Register() {
           onClick={back}
         />
         <span>
-          <button onClick={back}>BACK</button>
+          <button onClick={() => back()}>BACK</button>
         </span>
       </div>
       <div className="row pt-3 justify-content-center">
@@ -70,7 +68,7 @@ function Register() {
             REGISTER FOR YOUR ACCOUNT
           </h2>
           <Form className="d-grid" onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -81,7 +79,7 @@ function Register() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicUsername">
+            <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
@@ -92,7 +90,7 @@ function Register() {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
@@ -111,11 +109,8 @@ function Register() {
               {loading ? "Loading..." : "Register"}
             </Button>
           </Form>
-          <p className={style.p2}>
-            *if success, you’ll be redirected to the Log in page
-          </p>
           <p>
-            Already have an account?{" "}
+            Already have an account?
             <Link to="/login" className="text-light text-center">
               Log in here
             </Link>

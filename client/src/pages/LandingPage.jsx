@@ -1,12 +1,10 @@
 import "./css/LandingPage.css";
-import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
 function LandingPage() {
   const navigate = useNavigate();
   return (
     <>
-      <Header />
       <div id="landing-page">
         <div className="content py-4">
           <h1>PLAY OUR GAMES NOW AND GET NEW EXPERIENCES</h1>

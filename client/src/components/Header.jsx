@@ -12,14 +12,17 @@ function Header() {
 
     if (user === false) {
       return (
-      <Nav>
-        <Nav.Link as={NavLink} to="/login">
-          Login
-        </Nav.Link>
-        <Nav.Link as={NavLink} to="/register">
-          Register
-        </Nav.Link>
-      </Nav>
+        <Nav>
+          <Nav.Link as={NavLink} to="/login">
+            Login
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/register">
+            Register
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/game-list">
+            All Games
+          </Nav.Link>
+        </Nav>
       );
     }
 
@@ -28,7 +31,9 @@ function Header() {
         <Nav.Link as={NavLink} to="/game-list">
           All Games
         </Nav.Link>
-         <Navbar.Text>{user.username}</Navbar.Text>
+        <Nav.Link as={NavLink} to="/my-profile">
+          {user.username}
+        </Nav.Link>
         <Nav.Link onClick={() => logout()}>Logout</Nav.Link>
       </Nav>
     );
@@ -51,12 +56,8 @@ function Header() {
         <Navbar.Collapse
           id="responsive-navbar-nav"
           className="justify-content-end fs-3"
-        >            
-          <Nav>
-        
-      {jsx_rightSection()}
-      </Nav>
-
+        >
+          <Nav>{jsx_rightSection()}</Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

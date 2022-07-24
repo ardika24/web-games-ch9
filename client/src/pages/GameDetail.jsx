@@ -1,46 +1,16 @@
-import { Navbar, Container, Button, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import style from "./css/GameDetail.module.css";
 
 export default function GameDetail() {
-  function back() {
-    window.history.back();
-  }
+  // function back() {
+  //   window.history.back();
+  // }
 
   const navigate = useNavigate();
 
   return (
     <div>
-      <Navbar
-        expand="lg"
-        bg="dark"
-        variant="dark"
-        fixed="top"
-        className="opacity-50"
-      >
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              style={{ width: "11rem" }}
-              src="/logo-social1.png"
-              alt="logo"
-            />
-          </Navbar.Brand>
-          <Navbar.Brand className="justify-content-end">
-            <img
-              src="/back-button.png"
-              alt="back"
-              style={{ width: "3rem" }}
-              onClick={back}
-              className={style.back}
-            />
-            <span className={style.span}>
-              <button onClick={back}>BACK</button>
-            </span>
-          </Navbar.Brand>
-        </Container>
-      </Navbar>
-
       <section className={style.rps}>
         <div className="row d-flex justify-content-center">
           <div className="col d-flex flex-column justify-content-center">
