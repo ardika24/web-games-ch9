@@ -10,7 +10,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, latestData } = useAuth();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -32,6 +32,7 @@ function Login() {
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
+      latestData();
       navigate("/home");
     } else {
       const data = await response.json();
@@ -52,7 +53,7 @@ function Login() {
           className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
           id={style.loginForm}
         >
-          <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
+          <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUED</h2>
           <Form className="d-grid" onSubmit={onSubmit}>
             <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username</Form.Label>

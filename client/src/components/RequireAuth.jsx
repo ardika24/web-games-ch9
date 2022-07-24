@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
 
 function RequireAuth({ children }) {
-  const { user } = useAuth();
+  const { user, latestData } = useAuth();
 
   if (user === null) {
     return <h3>Checking user...</h3>;
@@ -12,6 +12,7 @@ function RequireAuth({ children }) {
     return <Navigate to="/login" />;
   }
 
+  latestData();
   return children;
 }
 
