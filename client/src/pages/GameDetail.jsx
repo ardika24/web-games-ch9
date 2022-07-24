@@ -1,32 +1,35 @@
-import { Button, Table } from "react-bootstrap";
+import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
+import Header from "../components/Header";
 import style from "./css/GameDetail.module.css";
 
 export default function GameDetail() {
-  // function back() {
-  //   window.history.back();
-  // }
-
   const navigate = useNavigate();
 
   return (
     <div>
+      <Header />
+
       <section className={style.rps}>
-        <div className="row d-flex justify-content-center">
-          <div className="col d-flex flex-column justify-content-center">
-            <div className="container p-5">
-              <img src="/rockpaperscissor.jpg" alt="rps" />
-              <Button
-                type="button"
-                variant="primary"
-                onClick={() => navigate("/rock-paper-scissor/play")}
-                className={style.loginButton}
-              >
-                PLAY
-              </Button>
-            </div>
-          </div>
-        </div>
+        <Row>
+          <Col>
+            <Card className="bg-dark text-white">
+              <Card.Img src="/rockpaperscissor.jpg" alt="rps" />
+              <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
+                <Card.Title>
+                  <Button
+                    type="button"
+                    variant="primary"
+                    onClick={() => navigate("/rock-paper-scissor/play")}
+                    style={{ width: "13rem" }}
+                  >
+                    PLAY
+                  </Button>
+                </Card.Title>
+              </Card.ImgOverlay>
+            </Card>
+          </Col>
+        </Row>
       </section>
 
       <section>

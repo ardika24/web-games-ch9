@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "./css/Login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ function Login() {
       method: "POST",
       body: JSON.stringify({ username, password }),
       headers: new Headers({
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       }),
     });
 
@@ -41,7 +41,7 @@ function Login() {
           data.error.code === "auth/user-not-found" ||
           data.error.code === "auth/wrong-password"
         ) {
-          alert("Wrong Username or Password!");
+          alert("Invalid username or password!");
         }
       }
     }
@@ -59,34 +59,32 @@ function Login() {
           id={style.loginForm}
         >
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
-          <Container>
-            <Form className="d-grid" onSubmit={onSubmit}>
-              <Form.Group className="mb-3" controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter email or username"
-                  value={username}
-                  onChange={(event) => setUsername(event.target.value)}
-                  required
-                />
-              </Form.Group>
+          <Form className="d-grid" onSubmit={onSubmit}>
+            <Form.Group className="mb-3" controlId="username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  required
-                />
-              </Form.Group>
-              <Button type="submit" className={style.loginButton}>
-                {loading ? "Loading..." : "Login"}
-              </Button>
-            </Form>
-          </Container>
+            <Form.Group className="mb-3" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
+            <Button type="submit" className={style.loginButton}>
+              {loading ? "Loading..." : "Login"}
+            </Button>
+          </Form>
           <div className="stick d-flex justify-content-center">
             <img src="/stick.png" alt="stick" />
           </div>

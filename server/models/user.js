@@ -13,7 +13,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-    static #encrypt = (password) => bcrypt.hashSync(password, 10);
+    // static #encrypt = (password) => bcrypt.hashSync(password, 10);
+
+    // static async register({ email, username, password }) {
+    //   if (!email || !username || !password) {
+    //     return Promise.reject({
+    //       message: "Data invalid",
+    //       code: "auth/register-invalid",
+    //     });
+    //   }
 
     static registerUser = async ({ email, username, password }) => {
       if (!email || !username || !password) {

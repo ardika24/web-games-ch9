@@ -2,29 +2,6 @@
     margin-top: 9em;
 }
 
-.span {
-    margin: auto;
-    margin-left: 0.1em;
-    font-size: 1.5em;
-}
-
-.span button {
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-    color: #ffffff;
-    transition: 300ms;
-}
-
-.span button:hover {
-    color: #000000;
-}
-
-.back {
-    cursor: pointer;
-    margin-top: -0.5em;
-}
-
 .right {
     background-color: #4d7bf1;
     border-radius: 2rem;

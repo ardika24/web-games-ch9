@@ -3,7 +3,7 @@ const { User } = require("../models");
 module.exports = {
   register: async (req, res) => {
     try {
-      const user = await User.registerUser(req.body);
+      const user = await User.register(req.body);
       const { id, email, username } = user;
       res.json({
         id,

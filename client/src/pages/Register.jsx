@@ -24,11 +24,12 @@ function Register() {
       method: "POST",
       body: JSON.stringify({ email, username, password }),
       headers: new Headers({
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=UTF-8",
       }),
     });
 
     setLoading(false);
+
     if (response.ok) {
       const data = await response.json();
       login(data.accessToken);
@@ -43,6 +44,7 @@ function Register() {
       }
     }
   }
+
   function back() {
     window.history.back();
   }
@@ -82,10 +84,10 @@ function Register() {
             <Form.Group className="mb-3" controlId="username">
               <Form.Label>Username</Form.Label>
               <Form.Control
-                type="text"
+                type="username"
                 placeholder="Enter Username"
                 value={username}
-                onChange={(event) => setUsername(event.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </Form.Group>
@@ -96,7 +98,7 @@ function Register() {
                 type="password"
                 placeholder="Enter Password"
                 value={password}
-                onChange={(event) => setPassword(event.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </Form.Group>
