@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
+
+  useEffect(() => {
+    document.title = "Profile Information - Binar Games"
+  }, [])
+
   return (
     <div>
       <div className={style.content}>

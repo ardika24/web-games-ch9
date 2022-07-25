@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import style from "./css/GameDetail.module.css";
-import { useAuth } from "../context/auth";
+// import { useAuth } from "../context/auth";
 
 export default function GameDetail() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -14,6 +14,7 @@ export default function GameDetail() {
     let ignore = false;
 
     async function boardData() {
+      if (loading) return;
       setLoading(true);
       const response = await fetch(
         "http://localhost:4000/api/v1/games/high-score"
@@ -31,8 +32,12 @@ export default function GameDetail() {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [loading]);
   console.log(details);
+
+  useEffect(() => {
+    document.title = "Rock Paper Scissor Detail Game Information - Binar Games"
+  }, [])
 
   return (
     <div>

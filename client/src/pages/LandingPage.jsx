@@ -1,9 +1,15 @@
 import "./css/LandingPage.css";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function LandingPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Play Free Online Games - Binar Games"
+  }, [])
+  
   return (
     <>
       <div id="landing-page">
