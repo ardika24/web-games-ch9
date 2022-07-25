@@ -11,8 +11,6 @@ export default function RockPaperScissor() {
   const [comPaperIsActive, setComPaperIsActive] = useState(false);
   const [comScissorIsActive, setComScissorIsActive] = useState(false);
 
-  // const [loading, setLoading] = useState(false);
-
   const [result, setResult] = useState("");
 
   const winScore = useRef(null);
@@ -90,10 +88,6 @@ export default function RockPaperScissor() {
   useEffect(() => {
     async function addScore() {
       if (score.current >= 1 && score.current < 3) {
-        // if (loading) return;
-
-        // setLoading(true);
-
         const response = await fetch(
           `http://localhost:4000/api/v1/user/${user.id}`,
           {
@@ -107,17 +101,11 @@ export default function RockPaperScissor() {
           }
         );
 
-        // setLoading(false);
-
         if (response.ok) {
           alert("You got 10 points");
         }
       }
       if (score.current >= 3) {
-        // if (loading) return;
-
-        // setLoading(true);
-
         const response = await fetch(
           `http://localhost:4000/api/v1/user/${user.id}`,
           {
@@ -130,8 +118,6 @@ export default function RockPaperScissor() {
             }),
           }
         );
-
-        // setLoading(false);
 
         if (response.ok) {
           alert(
