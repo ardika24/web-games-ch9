@@ -7,6 +7,7 @@ export default function UserProfile() {
     document.title = "Profile Information - Binar Games"
   }, [])
 
+
   return (
     <div>
       <div className={style.content}>

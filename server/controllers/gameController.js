@@ -5,11 +5,10 @@ module.exports = {
     try {
       const highScore = await User.findAll({
         attributes: [
-          "id",
-          "username",
           [sequelize.fn("max", sequelize.col("total_score")), "highScore"],
+          "username",
         ],
-        group: ["username", "total_score"],
+        group: ["username"],
         raw: true,
       });
       if (highScore) {
