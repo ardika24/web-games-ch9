@@ -32,7 +32,6 @@ export default function GameDetail() {
       ignore = true;
     };
   }, []);
-  console.log(details);
 
   return (
     <div>
@@ -93,7 +92,11 @@ export default function GameDetail() {
                       {details.map((detail, index) => (
                         <tr key={detail}>
                           <td>{index + 1}</td>
-                          <td>{detail.username}</td>
+                          <td>
+                            <Link to={`/user-profile/${detail.username}`}>
+                              {detail.username}
+                            </Link>
+                          </td>
                           <td>{detail.highScore}</td>
                         </tr>
                       ))}
