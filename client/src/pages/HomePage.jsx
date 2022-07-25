@@ -1,8 +1,10 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./css/HomePage.module.css";
+import { useAuth } from "../context/auth";
 
 function HomePage() {
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -11,7 +13,7 @@ function HomePage() {
         <div className="row pt-5">
           <div className="col-lg text-center text-dark">
             <div className={style.text}>
-              <h1>Hello there!</h1>
+              <h1>Hello there {user.username}!</h1>
               <br />
               <h3>Welcome to the Games, where you can play</h3>
               <h3>many games on the list.</h3>
