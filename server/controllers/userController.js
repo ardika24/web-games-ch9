@@ -121,7 +121,7 @@ class UserController {
         });
       }
     } catch (error) {
-      if (error.name === "SequelizeUniqueConstraintError") {
+      if (error) {
         res.status(400).json({ error });
       }
     }
