@@ -188,7 +188,7 @@ export default function RockPaperScissor() {
 
       <div className="row text-center text-light">
         <div className="col">
-          <h6>Reach 3 win streaks to get more points!</h6>
+          <h6>Reach 3 or more win streaks to get more points!</h6>
         </div>
       </div>
 
