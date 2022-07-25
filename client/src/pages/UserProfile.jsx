@@ -1,32 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import style from "./css/UserProfile.module.css";
 
 export default function UserProfile() {
-  const [profile, setProfile] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let ignore = false;
+    document.title = "Profile Information - Binar Games"
+  }, [])
 
-    async function profileData() {
-      setLoading(true);
-      const response = await fetch(
-        "http://localhost:4000/api/v1/users/${params.id}"
-      );
-      const data = await response.json();
-
-      if (ignore) return;
-
-      setLoading(false);
-      setProfile(data.data);
-    }
-
-    profileData();
-
-    return () => {
-      ignore = true;
-    };
-  }, []);
 
   return (
     <div>
