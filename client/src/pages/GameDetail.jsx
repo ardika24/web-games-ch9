@@ -90,44 +90,13 @@ export default function GameDetail() {
                     </thead>
 
                     <tbody>
-                      {details.map((detail) => (
+                      {details.map((detail, index) => (
                         <tr key={detail}>
-                          <td>{detail.id}</td>
+                          <td>{index + 1}</td>
                           <td>{detail.username}</td>
                           <td>{detail.highScore}</td>
                         </tr>
                       ))}
-                      <tr>
-                        <td>1</td>
-                        <td>
-                          <Link to="/user-profile">Jokowi</Link>
-                        </td>
-                        <td>99999</td>
-                      </tr>
-
-                      <tr>
-                        <td>2</td>
-                        <td>Sabrina</td>
-                        <td>5432</td>
-                      </tr>
-
-                      <tr>
-                        <td>3</td>
-                        <td>John</td>
-                        <td>4321</td>
-                      </tr>
-
-                      <tr>
-                        <td>4</td>
-                        <td>Paul</td>
-                        <td>3210</td>
-                      </tr>
-
-                      <tr>
-                        <td>5</td>
-                        <td>Jessica</td>
-                        <td>2109</td>
-                      </tr>
                     </tbody>
                   </Table>
                 </div>
