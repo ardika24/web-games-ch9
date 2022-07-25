@@ -54,7 +54,7 @@ function Header() {
       className="opacity-50"
     >
       <Container>
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={NavLink} to="/">
           <img style={{ width: "11rem" }} src="/logo-social1.png" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

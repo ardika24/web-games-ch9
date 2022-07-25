@@ -7,7 +7,7 @@ v1.get("/", (_, res) => {
   res.send("from v1");
 });
 
-v1.use("/game", gameRouter);
+v1.use("/games", gameRouter);
 v1.use("/user", userRouter);
 v1.use("/auth", authRouter);
 

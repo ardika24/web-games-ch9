@@ -1,9 +1,38 @@
+import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import style from "./css/GameDetail.module.css";
+import { useAuth } from "../context/auth";
 
 export default function GameDetail() {
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const [details, setDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let ignore = false;
+
+    async function boardData() {
+      setLoading(true);
+      const response = await fetch(
+        "http://localhost:4000/api/v1/games/high-score"
+      );
+      const data = await response.json();
+
+      if (ignore) return;
+
+      setLoading(false);
+      setDetails(data.data);
+    }
+
+    boardData();
+
+    return () => {
+      ignore = true;
+    };
+  }, []);
+  console.log(details);
 
   return (
     <div>
@@ -61,6 +90,13 @@ export default function GameDetail() {
                     </thead>
 
                     <tbody>
+                      {details.map((detail) => (
+                        <tr key={detail}>
+                          <td>{detail.id}</td>
+                          <td>{detail.username}</td>
+                          <td>{detail.highScore}</td>
+                        </tr>
+                      ))}
                       <tr>
                         <td>1</td>
                         <td>

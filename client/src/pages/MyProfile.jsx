@@ -2,12 +2,11 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./css/MyProfile.module.css";
 import { useAuth } from "../context/auth";
-import { useEffect } from "react";
 
 export default function MyProfile() {
-  const { user } = useAuth();
+  const { user, latestData } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => {}, [user]);
+  latestData();
   return (
     <div className={`${style.container} container-fluid`}>
       <div className="row pt-5">

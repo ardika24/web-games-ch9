@@ -101,9 +101,24 @@ class UserController {
           message: `User with ${id} not Found`,
         });
       }
-      const updatedUser = await User.update(req.body, {
-        where: { id: id },
-      });
+      const score = (await parseInt(user.total_score)) + req.body.total_score;
+      const updatedUser = await User.update(
+        { ...req.body, total_score: !score ? user.total_score : score },
+        {
+          where: { id: id },
+        }
+      );
+
+      // const score = (await parseInt(user.total_score)) + req.body.total_score;
+      // const updateScore = await User.update(
+      //   { total_score: score },
+      //   { where: { id: id } }
+      // );
+
+      if (updatedUser.error) {
+        return res.status(400);
+      }
+
       if (updatedUser == 1) {
         return res.status(200).json({
           result: "Success",
@@ -116,7 +131,7 @@ class UserController {
         });
       }
     } catch (error) {
-      res.json({ error });
+      res.status(400).json({ error });
     }
   }
 

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./RockPaperScissor.module.css";
+import { useAuth } from "../context/auth";
 
 export default function RockPaperScissor() {
+  const { user } = useAuth();
   const [uRockIsActive, setURockIsActive] = useState(false);
   const [uPaperIsActive, setUPaperIsActive] = useState(false);
   const [uScissorIsActive, setUScissorIsActive] = useState(false);
@@ -83,6 +85,50 @@ export default function RockPaperScissor() {
     win();
   }, [result]);
 
+  useEffect(() => {
+    async function addScore() {
+      if (score.current >= 1 && score.current < 3) {
+        const response = await fetch(
+          `http://localhost:4000/api/v1/user/${user.id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify({
+              total_score: 10,
+            }),
+            headers: new Headers({
+              "Content-Type": "application/json; charset=UTF-8",
+            }),
+          }
+        );
+
+        if (response.ok) {
+          alert("You got 10 points");
+        }
+      }
+      if (score.current >= 3) {
+        const response = await fetch(
+          `http://localhost:4000/api/v1/user/${user.id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify({
+              total_score: 30,
+            }),
+            headers: new Headers({
+              "Content-Type": "application/json; charset=UTF-8",
+            }),
+          }
+        );
+
+        if (response.ok) {
+          alert(
+            `You got ${score.current} win streaks and 30 points, keep going!`
+          );
+        }
+      }
+    }
+    addScore();
+  }, [user.id, score.current]);
+
   const handleURockClick = () => {
     setURockIsActive(true);
     setUPaperIsActive(false);
@@ -142,7 +188,7 @@ export default function RockPaperScissor() {
 
       <div className="row text-center text-light">
         <div className="col">
-          <h6>Reach 3 win streaks to get more points!</h6>
+          <h6>Reach 3 or more win streaks to get more points!</h6>
         </div>
       </div>
 

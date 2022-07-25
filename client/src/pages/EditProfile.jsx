@@ -45,9 +45,8 @@ export default function MyProfile() {
     } else {
       const data = await response.json();
       if (data && data.error) {
-        if (data.error.code === "auth/user-exist") {
+        if (data.error.name === "SequelizeUniqueConstraintError") {
           alert("Username already taken! Please choose another one");
-          navigate("/login");
         }
       }
     }
@@ -85,6 +84,7 @@ export default function MyProfile() {
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      placeholder={`${user.username}  is your current username`}
                     />
                   </Form.Group>
 
