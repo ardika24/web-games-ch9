@@ -85,6 +85,7 @@ export default function MyProfile() {
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
+                      placeholder={`${user.username}  is your current username`}
                     />
                   </Form.Group>
 
