@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "./css/Login.module.css";
@@ -45,6 +45,11 @@ function Login() {
       }
     }
   }
+  
+  useEffect(() => {
+    document.title = "Login to your account - Binar Games"
+  }, [])
+
   return (
     <div className={style.container}>
       <div className="row pt-3 justify-content-center">

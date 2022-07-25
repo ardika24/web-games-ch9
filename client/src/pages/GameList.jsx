@@ -1,9 +1,14 @@
 import { Carousel, Button, Col, Row, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import style from "./css/GameList.module.css";
+import { useEffect } from "react";
 
 export default function GameList() {
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    document.title = "Play your favourite game - Binar Games"
+  }, [])
 
   return (
     <div className={style.home}>
@@ -15,24 +20,26 @@ export default function GameList() {
         <div className="row pt-3">
           <div className="col-lg">
             <Row xs={1} md={2} className="g-4">
-              {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
-                  <Card className="bg-dark text-white">
-                    <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
-                    <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
-                      <Card.Title>
-                        <Button
-                          type="submit"
-                          onClick={() => navigate("/rock-paper-scissor")}
-                          className="opacity-75"
-                        >
-                          Play Now!
-                        </Button>
-                      </Card.Title>
-                    </Card.ImgOverlay>
-                  </Card>
-                </Col>
-              ))}
+              {Array.from({ length: 4 }).map((_, idx) => {
+                return (
+                  <Col key={idx}>
+                    <Card className="bg-dark text-white">
+                      <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
+                      <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
+                        <Card.Title>
+                          <Button
+                            type="submit"
+                            onClick={() => navigate("/rock-paper-scissor")}
+                            className="opacity-75"
+                          >
+                            Play Now!
+                          </Button>
+                        </Card.Title>
+                      </Card.ImgOverlay>
+                    </Card>
+                  </Col>
+                );
+              })}
             </Row>
           </div>
           <div className="col-lg-4">
@@ -72,7 +79,7 @@ export default function GameList() {
           <div className="col-lg">
             <Row xs={1} md={2} className="g-4">
               {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
+                <Col key={idx}>
                   <Card className="bg-dark text-white">
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
@@ -103,7 +110,7 @@ export default function GameList() {
           <div className="col-lg">
             <Row xs={1} md={2} className="g-4">
               {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
+                <Col key={idx}>
                   <Card className="bg-dark text-white">
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
@@ -158,7 +165,7 @@ export default function GameList() {
           <div className="col-lg">
             <Row xs={1} md={2} className="g-4">
               {Array.from({ length: 4 }).map((_, idx) => (
-                <Col>
+                <Col key={idx}>
                   <Card className="bg-dark text-white">
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">

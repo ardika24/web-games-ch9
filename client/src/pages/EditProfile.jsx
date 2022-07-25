@@ -1,7 +1,7 @@
 import { Button, Form, Col, Row } from "react-bootstrap";
 import style from "./css/EditProfile.module.css";
 import { useAuth } from "../context/auth";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function MyProfile() {
@@ -51,6 +51,10 @@ export default function MyProfile() {
       }
     }
   }
+  
+  useEffect(() => {
+    document.title = `Edit ${user.username} profile - Binar Games`
+  }, [user.username])
 
   return (
     <div className={`${style.container} container-fluid`}>

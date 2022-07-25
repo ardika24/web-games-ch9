@@ -174,12 +174,16 @@ export default function RockPaperScissor() {
       setResult("");
     }, 800);
   };
+  
+  useEffect(() => {
+    document.title = "Rock Paper Scissor Play Room - Binar Games"
+  }, [])
 
   return (
     <div className={style.home}>
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
         <div className="col">
-          <h3>Username</h3>
+          <h3>{user.username}</h3>
         </div>
         <div className="col">
           <h3>COM</h3>
