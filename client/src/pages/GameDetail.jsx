@@ -93,7 +93,7 @@ export default function GameDetail() {
                         <tr key={detail}>
                           <td>{index + 1}</td>
                           <td>
-                            <Link to={`/user-profile/${detail.username}`}>
+                            <Link to={`/user-profile/${detail.id}`}>
                               {detail.username}
                             </Link>
                           </td>
