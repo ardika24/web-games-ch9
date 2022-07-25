@@ -104,6 +104,11 @@ class UserController {
       const updatedUser = await User.update(req.body, {
         where: { id: id },
       });
+
+      if (updatedUser.error) {
+        return res.status(400);
+      }
+
       if (updatedUser == 1) {
         return res.status(200).json({
           result: "Success",
@@ -116,7 +121,9 @@ class UserController {
         });
       }
     } catch (error) {
-      res.json({ error });
+      if (error.name === "SequelizeUniqueConstraintError") {
+        res.status(400).json({ error });
+      }
     }
   }
 
