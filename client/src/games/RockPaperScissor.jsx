@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import style from "./RockPaperScissor.module.css";
+import { useAuth } from "../context/auth";
 
 export default function RockPaperScissor() {
+  const { user } = useAuth();
   const [uRockIsActive, setURockIsActive] = useState(false);
   const [uPaperIsActive, setUPaperIsActive] = useState(false);
   const [uScissorIsActive, setUScissorIsActive] = useState(false);
   const [comRockIsActive, setComRockIsActive] = useState(false);
   const [comPaperIsActive, setComPaperIsActive] = useState(false);
   const [comScissorIsActive, setComScissorIsActive] = useState(false);
+
+  // const [loading, setLoading] = useState(false);
 
   const [result, setResult] = useState("");
 
@@ -82,6 +86,62 @@ export default function RockPaperScissor() {
     }
     win();
   }, [result]);
+
+  useEffect(() => {
+    async function addScore() {
+      if (score.current >= 1 && score.current < 3) {
+        // if (loading) return;
+
+        // setLoading(true);
+
+        const response = await fetch(
+          `http://localhost:4000/api/v1/user/${user.id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify({
+              total_score: 10,
+            }),
+            headers: new Headers({
+              "Content-Type": "application/json; charset=UTF-8",
+            }),
+          }
+        );
+
+        // setLoading(false);
+
+        if (response.ok) {
+          alert("You got 10 points");
+        }
+      }
+      if (score.current >= 3) {
+        // if (loading) return;
+
+        // setLoading(true);
+
+        const response = await fetch(
+          `http://localhost:4000/api/v1/user/${user.id}`,
+          {
+            method: "PUT",
+            body: JSON.stringify({
+              total_score: 30,
+            }),
+            headers: new Headers({
+              "Content-Type": "application/json; charset=UTF-8",
+            }),
+          }
+        );
+
+        // setLoading(false);
+
+        if (response.ok) {
+          alert(
+            `You got ${score.current} win streaks and 30 points, keep going!`
+          );
+        }
+      }
+    }
+    addScore();
+  }, [user.id, score.current]);
 
   const handleURockClick = () => {
     setURockIsActive(true);
