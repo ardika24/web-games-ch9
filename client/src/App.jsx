@@ -12,6 +12,7 @@ import GameDetail from "./pages/GameDetail";
 import RockPaperScissor from "./games/RockPaperScissor";
 import { ProvideAuth } from "./context/auth";
 import RequireAuth from "./components/RequireAuth";
+import TicTacToe from "./games/TicTacToe";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               }
             />
             <Route path="/home" element={<HomePage />} />
+
             <Route
               path="/user/:id"
               element={
@@ -62,6 +64,14 @@ function App() {
               element={
                 <RequireAuth>
                   <RockPaperScissor />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/tic-tac-toe/play"
+              element={
+                <RequireAuth>
+                  <TicTacToe />
                 </RequireAuth>
               }
             />
