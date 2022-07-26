@@ -5,9 +5,8 @@ import { useAuth } from "../context/auth";
 import { useEffect } from "react";
 
 export default function MyProfile() {
-  const { user, latestData } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
-  latestData();
 
   useEffect(() => {
     document.title = `${user.username} profile - Binar Games`;
