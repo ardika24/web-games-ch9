@@ -27,16 +27,12 @@ class UserController {
         conditions.push({ social_media_url });
       }
       const data = await User.findAll({
-        where: {
-          [Op.and]: conditions,
-        },
+        order: [["total_score", "DESC"]],
       });
-      if (data) {
-        return res.status(200).json({
-          result: "succes",
-          data,
-        });
-      }
+      res.json(data);
+      // if (data) {
+      //   return res.status(200).json(data);
+      // }
     } catch (err) {
       next(err);
     }
@@ -47,10 +43,7 @@ class UserController {
       const { id } = req.params;
       const user = await User.findByPk(id);
       if (user) {
-        return res.status(200).json({
-          result: "Success",
-          data: user,
-        });
+        return res.status(200).json(user);
       } else {
         return res.status(400).json({
           result: "Not Found",
@@ -108,12 +101,6 @@ class UserController {
           where: { id: id },
         }
       );
-
-      // const score = (await parseInt(user.total_score)) + req.body.total_score;
-      // const updateScore = await User.update(
-      //   { total_score: score },
-      //   { where: { id: id } }
-      // );
 
       if (updatedUser.error) {
         return res.status(400);

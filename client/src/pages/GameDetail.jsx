@@ -14,17 +14,14 @@ export default function GameDetail() {
     let ignore = false;
 
     async function boardData() {
-      if (loading) return;
       setLoading(true);
-      const response = await fetch(
-        "http://localhost:4000/api/v1/games/high-score"
-      );
+      const response = await fetch("http://localhost:4000/api/v1/user/");
       const data = await response.json();
 
       if (ignore) return;
 
       setLoading(false);
-      setDetails(data.data);
+      setDetails(data);
     }
 
     boardData();
@@ -32,12 +29,11 @@ export default function GameDetail() {
     return () => {
       ignore = true;
     };
-  }, [loading]);
-  console.log(details)
+  }, []);
 
   useEffect(() => {
-    document.title = "Rock Paper Scissor Detail Game Information - Binar Games"
-  }, [])
+    document.title = "Rock Paper Scissor Detail Game Information - Binar Games";
+  }, []);
 
   return (
     <div>
@@ -64,7 +60,7 @@ export default function GameDetail() {
       </section>
 
       <section>
-        <div className="row pt-5 justify-content-center">
+        <div className="row pt-5 justify-content-center mh-100">
           <div className="col-lg-5">
             <div className="left text-light">
               <h2 className="text-center">GAME DESCRIPTION:</h2>
@@ -80,7 +76,7 @@ export default function GameDetail() {
             </div>
           </div>
           <div className="col-lg-6 text-light">
-            <div className={`${style.right} rounded`}>
+            <div className={`${style.right} rounded overflow-auto`}>
               <div className="container p-5">
                 <h2 className="text-center">LEADERBOARD:</h2>
                 <br />
@@ -94,19 +90,27 @@ export default function GameDetail() {
                       </tr>
                     </thead>
 
-                    <tbody>
-                      {details.map((detail, index) => (
-                        <tr key={detail}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <Link to={`/user-profile/${detail.id}`}>
-                              {detail.username}
-                            </Link>
-                          </td>
-                          <td>{detail.highScore}</td>
+                    {loading ? (
+                      <tbody>
+                        <tr>
+                          <td>Loading...</td>
                         </tr>
-                      ))}
-                    </tbody>
+                      </tbody>
+                    ) : (
+                      details.map((detail, index) => (
+                        <tbody key={detail.id}>
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>
+                              <Link to={`/user/${detail.id}`}>
+                                {detail.username}
+                              </Link>
+                            </td>
+                            <td>{detail.total_score}</td>
+                          </tr>
+                        </tbody>
+                      ))
+                    )}
                   </Table>
                 </div>
               </div>
