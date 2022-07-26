@@ -109,6 +109,7 @@ export default function MyProfile() {
                   <Form.Group as={Col} md="7" controlId="city" className="mt-3">
                     <Form.Label>City</Form.Label>
                     <Form.Control
+                      style={{ textTransform: "capitalize" }}
                       type="text"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
