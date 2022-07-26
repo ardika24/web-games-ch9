@@ -8,7 +8,8 @@ import EditProfile from "./pages/EditProfile";
 import HomePage from "./pages/HomePage";
 import UserProfile from "./pages/UserProfile";
 import GameList from "./pages/GameList";
-import GameDetail from "./pages/GameDetail";
+import GameDetailRPS from "./pages/GameDetailRPS";
+import GameDetailTTT from "./pages/GameDetailTTT";
 import RockPaperScissor from "./games/RockPaperScissor";
 import { ProvideAuth } from "./context/auth";
 import RequireAuth from "./components/RequireAuth";
@@ -55,7 +56,7 @@ function App() {
               path="/rock-paper-scissor"
               element={
                 <RequireAuth>
-                  <GameDetail />
+                  <GameDetailRPS />
                 </RequireAuth>
               }
             />
@@ -64,6 +65,14 @@ function App() {
               element={
                 <RequireAuth>
                   <RockPaperScissor />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/tic-tac-toe"
+              element={
+                <RequireAuth>
+                  <GameDetailTTT />
                 </RequireAuth>
               }
             />

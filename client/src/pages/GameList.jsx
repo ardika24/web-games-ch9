@@ -5,10 +5,10 @@ import { useEffect } from "react";
 
 export default function GameList() {
   const navigate = useNavigate();
-  
+
   useEffect(() => {
-    document.title = "Play your favourite game - Binar Games"
-  }, [])
+    document.title = "Play your favourite game - Binar Games";
+  }, []);
 
   return (
     <div className={style.home}>
@@ -43,7 +43,7 @@ export default function GameList() {
             </Row>
           </div>
           <div className="col-lg-4">
-            <Carousel className="shadow-lg m-3">
+            <Carousel variant="dark" className="shadow-lg m-3">
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -51,7 +51,6 @@ export default function GameList() {
                   alt="First slide"
                 />
                 <Carousel.Caption className="text-dark fs-4">
-                  <div></div>
                   <Button
                     type="submit"
                     onClick={() => navigate("/rock-paper-scissor")}
@@ -63,15 +62,17 @@ export default function GameList() {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="game1.jpg"
+                  src="tictactoe.png"
                   alt="Second slide"
                 />
 
                 <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+                  <Button
+                    type="submit"
+                    onClick={() => navigate("/tic-tac-toe")}
+                  >
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -86,7 +87,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rock-paper-scissor")}
+                          onClick={() => navigate("/tic-tac-toe")}
                           className="opacity-75"
                         >
                           Play Now!
@@ -130,7 +131,7 @@ export default function GameList() {
             </Row>
           </div>
           <div className="col-lg-4">
-            <Carousel className="shadow-lg m-3">
+            <Carousel variant="dark" className="shadow-lg m-3">
               <Carousel.Item>
                 <img
                   className="d-block w-100"
@@ -149,15 +150,17 @@ export default function GameList() {
               <Carousel.Item>
                 <img
                   className="d-block w-100"
-                  src="game1.jpg"
+                  src="tictactoe.png"
                   alt="Second slide"
                 />
 
                 <Carousel.Caption>
-                  <h3>Second slide label</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+                  <Button
+                    type="submit"
+                    onClick={() => navigate("/tic-tac-toe")}
+                  >
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -172,7 +175,7 @@ export default function GameList() {
                       <Card.Title>
                         <Button
                           type="submit"
-                          onClick={() => navigate("/rock-paper-scissor")}
+                          onClick={() => navigate("/tic-tac-toe")}
                           className="opacity-75"
                         >
                           Play Now!
