@@ -38,8 +38,8 @@ export default function UserProfile() {
   }, [params.id]);
 
   useEffect(() => {
-    document.title = `${user.username}'s Profile - Binar Games`;
-  }, [user.username]);
+    document.title = "Profile Information - Binar Games";
+  }, []);
 
   return (
     <div>
