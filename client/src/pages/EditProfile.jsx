@@ -51,10 +51,10 @@ export default function MyProfile() {
       }
     }
   }
-  
+
   useEffect(() => {
-    document.title = `Edit ${user.username} profile - Binar Games`
-  }, [user.username])
+    document.title = `Edit ${user.username} profile - Binar Games`;
+  }, [user.username]);
 
   return (
     <div className={`${style.container} container-fluid`}>
@@ -105,26 +105,6 @@ export default function MyProfile() {
                       value={socmed}
                     />
                   </Form.Group>
-
-                  {/* <Form.Group
-                    as={Col}
-                    md="7"
-                    controlId="social_media_url"
-                    className="mt-3"
-                  >
-                    <Form.Label>Twitter Profile</Form.Label>
-                    <InputGroup hasValidation>
-                      <InputGroup.Text id="inputGroupPrepend">
-                        @
-                      </InputGroup.Text>
-                      <Form.Control
-                        type="text"
-                        value={socmed}
-                        aria-describedby="inputGroupPrepend"
-                        onChange={(e) => setSocMed(e.target.value)}
-                      />
-                    </InputGroup>
-                  </Form.Group> */}
 
                   <Form.Group as={Col} md="7" controlId="city" className="mt-3">
                     <Form.Label>City</Form.Label>
