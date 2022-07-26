@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import style from "./css/GameDetail.module.css";
-// import { useAuth } from "../context/auth";
+import style from "./css/GameDetailTTT.module.css";
 
 export default function GameDetail() {
   const navigate = useNavigate();
-  // const { user } = useAuth();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,13 +39,13 @@ export default function GameDetail() {
         <Row>
           <Col>
             <Card className="bg-dark text-white">
-              <Card.Img src="/rockpaperscissor.jpg" alt="rps" />
+              <Card.Img src="/tictactoe.png" alt="rps" />
               <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
                 <Card.Title>
                   <Button
                     type="button"
                     variant="primary"
-                    onClick={() => navigate("/rock-paper-scissor/play")}
+                    onClick={() => navigate("/tic-tac-toe/play")}
                     style={{ width: "13rem" }}
                   >
                     PLAY
@@ -66,12 +64,10 @@ export default function GameDetail() {
               <h2 className="text-center">GAME DESCRIPTION:</h2>
               <br />
               <h3 className="text-center">
-                Rock-paper-scissors is a hand game usually played by two people,
-                in this case you will play against the COM, where players
-                simultaneously form one of three shapes with an outstretched
-                hand. The "rock" beats scissors, the "scissors" beat paper and
-                the "paper" beats rock; if both players throw the same shape,
-                the game is tied.
+                This is a game in which two players alternately put Xs and Os in
+                compartments of a figure formed by two vertical lines crossing
+                two horizontal lines and each tries to get a row of three Xs or
+                three Os before the opponent does.
               </h3>
             </div>
           </div>
