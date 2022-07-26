@@ -174,10 +174,10 @@ export default function RockPaperScissor() {
       setResult("");
     }, 800);
   };
-  
+
   useEffect(() => {
-    document.title = "Rock Paper Scissor Play Room - Binar Games"
-  }, [])
+    document.title = "Rock Paper Scissor Play Room - Binar Games";
+  }, []);
 
   return (
     <div className={style.home}>
