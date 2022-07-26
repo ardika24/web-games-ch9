@@ -1,0 +1,36 @@
+body {
+  overflow-x: hidden;
+  background-color: #002176;
+}
+
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#landing-page {
+  background-image: url(/public/game1.png);
+  background-size: cover;
+  background-position: center;
+  max-width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#landing-page button {
+  margin-top: 1em;
+  width: 10rem;
+  font-weight: 700;
+}
+
+#landing-page h1 {
+  line-height: 2.5rem;
+  color: #cfdbfa;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #002176,
+    0 0 30px #002176, 0 0 40px #002176, 0 0 55px #002176, 0 0 75px #002176;
+}

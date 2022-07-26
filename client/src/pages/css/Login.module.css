@@ -1,0 +1,58 @@
+.container {
+  margin-top: 5em;
+}
+
+.back {
+  position: absolute;
+  z-index: 2;
+  font-weight: 700;
+  display: flex;
+  margin-left: 3em;
+  margin-top: 2em;
+}
+
+.back span {
+  margin: auto;
+  margin-left: 0.1em;
+  font-size: 1.5em;
+}
+
+.back span button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: #ffffff;
+  transition: 300ms;
+}
+
+.back span button:hover {
+  color: #4d7bf1;
+}
+
+.back img {
+  cursor: pointer;
+}
+
+#loginForm {
+  background-color: #4d7bf1;
+  color: #ffffff;
+  margin: 2em;
+  padding: 3em;
+  border-radius: 1rem;
+}
+
+#loginForm p {
+  align-self: center;
+}
+
+.loginButton {
+  width: 18rem;
+  background-color: #002176;
+  justify-self: center;
+  margin-top: 1em;
+}
+
+.stick img {
+  width: 1.8em;
+  justify-self: center;
+}
