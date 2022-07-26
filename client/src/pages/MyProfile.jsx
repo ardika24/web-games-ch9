@@ -10,9 +10,9 @@ export default function MyProfile() {
   latestData();
 
   useEffect(() => {
-    document.title = `${user.username} profile - Binar Games`
-  }, [user.username])
-  
+    document.title = `${user.username} profile - Binar Games`;
+  }, [user.username]);
+
   return (
     <div className={`${style.container} container-fluid`}>
       <div className="row pt-5">
@@ -48,6 +48,8 @@ export default function MyProfile() {
                 <p>{user.social_media_url}</p>
                 <h5>City:</h5>
                 <p>{user.city}</p>
+                <h5>Joined At:</h5>
+                <p>{new Date(user.createdAt).toLocaleDateString()}</p>
               </div>
               <div className="row justify-content-center mt-3">
                 <Button
