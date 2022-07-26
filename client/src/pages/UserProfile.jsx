@@ -64,6 +64,8 @@ export default function UserProfile() {
                     <p>{user.social_media_url}</p>
                     <h5>City:</h5>
                     <p>{user.city}</p>
+                    <h5>Joined At:</h5>
+                    <p>{new Date(user.createdAt).toLocaleDateString()}</p>
                   </div>
                 </div>
               )}
