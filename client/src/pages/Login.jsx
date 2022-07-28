@@ -58,32 +58,49 @@ function Login() {
           id={style.loginForm}
         >
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
-          <Form className="d-grid" onSubmit={onSubmit}>
-            <Form.Group className="mb-3" controlId="username">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
+          <div
+            className={`${style.googleButton} d-flex justify-content-center`}
+          >
+            <a href="/auth/google">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                alt="Google logo"
+                className="img-fluid"
               />
-            </Form.Group>
+              Sign in with Google
+            </a>
+          </div>
+          <div className={style.textChoice}>
+            <p className="text text-center text-light">Or</p>
+          </div>
+          <div>
+            <Form className="d-grid" onSubmit={onSubmit}>
+              <Form.Group className="mb-3" controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Button type="submit" className={style.loginButton}>
-              {loading ? "Loading..." : "Login"}
-            </Button>
-          </Form>
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </Form.Group>
+              <Button type="submit" className={style.loginButton}>
+                {loading ? "Loading..." : "Login"}
+              </Button>
+            </Form>
+          </div>
           <div className="stick d-flex justify-content-center">
             <img src="/stick.png" alt="stick" />
           </div>

@@ -55,35 +55,6 @@ class UserController {
     }
   }
 
-  static async createUser(req, res, next) {
-    try {
-      const { email, username, password, bio, city, social_media_url } =
-        req.body;
-      if (!username || !email) {
-        return res.status(400).json({
-          result: "Failed",
-          message: "username or email cannot be empty",
-        });
-      }
-      if (!password) {
-        return res.status(400).json({
-          result: "Failed",
-          message: "password cannot be empty",
-        });
-      }
-      const newUser = {
-        username,
-        email,
-        password: await hashPassword(password),
-        bio,
-        city,
-        social_media_url,
-      };
-    } catch (err) {
-      next(err);
-    }
-  }
-
   static async updateUser(req, res, next) {
     try {
       const { id } = req.params;

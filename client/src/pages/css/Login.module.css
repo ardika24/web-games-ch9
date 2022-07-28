@@ -45,10 +45,32 @@
   align-self: center;
 }
 
+.googleButton {
+  border: whitesmoke 1px solid;
+  border-radius: 1rem;
+  padding: 0.5em;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.googleButton a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.googleButton img {
+  width: 2em;
+  margin-right: 0.8em;
+}
+
 .loginButton {
   width: 18rem;
   background-color: #002176;
   justify-self: center;
+  margin-top: 1em;
+}
+
+.textChoice {
   margin-top: 1em;
 }
 
