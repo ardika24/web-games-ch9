@@ -12,6 +12,10 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  const google = () => {
+    window.open("http://localhost:4000/auth/google", "_self");
+  };
+
   async function onSubmit(event) {
     event.preventDefault();
 
@@ -60,6 +64,7 @@ function Login() {
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
           <div
             className={`${style.googleButton} d-flex justify-content-center`}
+            onClick={google}
           >
             <a href="/auth/google">
               <img
