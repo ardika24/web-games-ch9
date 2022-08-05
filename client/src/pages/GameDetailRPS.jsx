@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "../styles/GameDetailRPS.module.css";
 
 export default function GameDetail() {
-  const navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,14 +41,15 @@ export default function GameDetail() {
               <Card.Img src="/rockpaperscissor.jpg" alt="rps" />
               <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
                 <Card.Title>
-                  <Button
-                    type="button"
-                    variant="primary"
-                    onClick={() => navigate("/rock-paper-scissor/play")}
-                    style={{ width: "13rem" }}
-                  >
-                    PLAY
-                  </Button>
+                  <Link to="/rock-paper-scissor/play">
+                    <Button
+                      type="button"
+                      variant="primary"
+                      style={{ width: "13rem" }}
+                    >
+                      PLAY
+                    </Button>
+                  </Link>
                 </Card.Title>
               </Card.ImgOverlay>
             </Card>

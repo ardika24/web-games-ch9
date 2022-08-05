@@ -1,11 +1,9 @@
 import { Carousel, Button, Col, Row, Card } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "../styles/GameList.module.css";
 import { useEffect } from "react";
 
 export default function GameList() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.title = "Play your favourite game - Binar Games";
   }, []);
@@ -27,13 +25,11 @@ export default function GameList() {
                       <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                       <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                         <Card.Title>
-                          <Button
-                            type="submit"
-                            onClick={() => navigate("/rock-paper-scissor")}
-                            className="opacity-75"
-                          >
-                            Play Now!
-                          </Button>
+                          <Link to="/rock-paper-scissor">
+                            <Button type="button" className="opacity-75">
+                              Play Now!
+                            </Button>
+                          </Link>
                         </Card.Title>
                       </Card.ImgOverlay>
                     </Card>
@@ -51,12 +47,9 @@ export default function GameList() {
                   alt="First slide"
                 />
                 <Carousel.Caption className="text-dark fs-4">
-                  <Button
-                    type="submit"
-                    onClick={() => navigate("/rock-paper-scissor")}
-                  >
-                    Play Now!
-                  </Button>
+                  <Link to="/rock-paper-scissor">
+                    <Button type="button">Play Now!</Button>
+                  </Link>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -67,12 +60,9 @@ export default function GameList() {
                 />
 
                 <Carousel.Caption>
-                  <Button
-                    type="submit"
-                    onClick={() => navigate("/tic-tac-toe")}
-                  >
-                    Play Now!
-                  </Button>
+                  <Link to="/tic-tac-toe">
+                    <Button type="button">Play Now!</Button>
+                  </Link>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -85,13 +75,11 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Button
-                          type="submit"
-                          onClick={() => navigate("/tic-tac-toe")}
-                          className="opacity-75"
-                        >
-                          Play Now!
-                        </Button>
+                        <Link to="/tic-tac-toe">
+                          <Button type="button" className="opacity-75">
+                            Play Now!
+                          </Button>
+                        </Link>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>
@@ -116,13 +104,11 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Button
-                          type="submit"
-                          onClick={() => navigate("/rock-paper-scissor")}
-                          className="opacity-75"
-                        >
-                          Play Now!
-                        </Button>
+                        <Link to="/rock-paper-scissor">
+                          <Button type="button" className="opacity-75">
+                            Play Now!
+                          </Button>
+                        </Link>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>
@@ -139,12 +125,9 @@ export default function GameList() {
                   alt="First slide"
                 />
                 <Carousel.Caption className="text-dark fs-4">
-                  <Button
-                    type="submit"
-                    onClick={() => navigate("/rock-paper-scissor")}
-                  >
-                    Play Now!
-                  </Button>
+                  <Link to="/rock-paper-scissor">
+                    <Button type="button">Play Now!</Button>
+                  </Link>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -155,12 +138,9 @@ export default function GameList() {
                 />
 
                 <Carousel.Caption>
-                  <Button
-                    type="submit"
-                    onClick={() => navigate("/tic-tac-toe")}
-                  >
-                    Play Now!
-                  </Button>
+                  <Link to="/tic-tac-toe">
+                    <Button type="button">Play Now!</Button>
+                  </Link>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -173,13 +153,11 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Button
-                          type="submit"
-                          onClick={() => navigate("/tic-tac-toe")}
-                          className="opacity-75"
-                        >
-                          Play Now!
-                        </Button>
+                        <Link to="/tic-tac-toe">
+                          <Button type="button" className="opacity-75">
+                            Play Now!
+                          </Button>
+                        </Link>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>

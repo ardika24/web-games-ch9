@@ -2,25 +2,3 @@
   background-color: #4d7bf1;
   padding: 1em;
 }
-
-.span {
-  margin: auto;
-  margin-left: 0.1em;
-  font-size: 1.5em;
-}
-
-.span button {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  color: #ffffff;
-  transition: 300ms;
-}
-
-.span button:hover {
-  color: #000000;
-}
-
-.back {
-  cursor: pointer;
-}

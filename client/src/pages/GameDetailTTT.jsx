@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "../styles/GameDetailTTT.module.css";
 
 export default function GameDetail() {
-  const navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,14 +41,15 @@ export default function GameDetail() {
               <Card.Img src="/tictactoe.png" alt="rps" />
               <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
                 <Card.Title>
-                  <Button
-                    type="button"
-                    variant="primary"
-                    onClick={() => navigate("/tic-tac-toe/play")}
-                    style={{ width: "13rem" }}
-                  >
-                    PLAY
-                  </Button>
+                  <Link to="/tic-tac-toe/play">
+                    <Button
+                      type="button"
+                      variant="primary"
+                      style={{ width: "13rem" }}
+                    >
+                      PLAY
+                    </Button>
+                  </Link>
                 </Card.Title>
               </Card.ImgOverlay>
             </Card>

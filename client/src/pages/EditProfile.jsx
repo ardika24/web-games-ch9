@@ -3,6 +3,7 @@ import style from "../styles/EditProfile.module.css";
 import { useAuth } from "../context/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import cn from "classnames";
 
 export default function MyProfile() {
   const { user, latestData } = useAuth();
@@ -36,14 +37,14 @@ export default function MyProfile() {
       }
     );
 
-    setLoading(false);
-
     if (response.ok) {
-      latestData();
+      await latestData();
+      setLoading(false);
       alert("Congratulations, your account has been successfully updated.");
       navigate("/my-profile");
     } else {
       const data = await response.json();
+      setLoading(false);
       if (data && data.error) {
         if (data.error.name === "SequelizeUniqueConstraintError") {
           alert("Username already taken! Please choose another one");
@@ -57,7 +58,7 @@ export default function MyProfile() {
   }, [user.username]);
 
   return (
-    <div className={`${style.container} container-fluid`}>
+    <div className={cn(style.container, "container-fluid")}>
       <div className="row pt-5">
         <div className="col-lg-5">
           <div className="left text-light">

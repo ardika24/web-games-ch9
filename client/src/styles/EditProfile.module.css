@@ -11,37 +11,6 @@
   border-radius: 1rem;
 }
 
-.back {
-  position: absolute;
-  z-index: 2;
-  font-weight: 700;
-  display: flex;
-  margin-left: 1em;
-  margin-top: 1em;
-}
-
-.back span {
-  margin: auto;
-  margin-left: 0.1em;
-  font-size: 1.5em;
-}
-
-.back span button {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  color: #ffffff;
-  transition: 300ms;
-}
-
-.back span button:hover {
-  color: #4d7bf1;
-}
-
-.back img {
-  cursor: pointer;
-}
-
 .loginButton {
   width: 15rem;
   background-color: #002176;

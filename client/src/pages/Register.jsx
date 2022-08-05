@@ -29,14 +29,15 @@ function Register() {
       }),
     });
 
-    setLoading(false);
-
     if (response.ok) {
       const data = await response.json();
-      login(data.accessToken);
+      await login(data.accessToken);
+      setLoading(false);
+      alert("Register Success");
       navigate("/home");
     } else {
       const data = await response.json();
+      setLoading(false);
       if (data && data.error) {
         if (data.error.code === "auth/user-exist") {
           alert("Username or email already exist, please login");

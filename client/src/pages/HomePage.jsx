@@ -1,12 +1,11 @@
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "../styles/HomePage.module.css";
 import { useAuth } from "../context/auth";
 import { useEffect } from "react";
 
 function HomePage() {
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = `Hello ${user.username} Lets start play some games - Binar Games`;
@@ -32,13 +31,11 @@ function HomePage() {
             </div>
 
             <div className="row justify-content-center mt-4">
-              <Button
-                type="submit"
-                className={style.loginButton}
-                onClick={() => navigate("/game-list")}
-              >
-                Play!
-              </Button>
+              <Link to="/game-list">
+                <Button type="button" className={style.loginButton}>
+                  Play!
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="col-lg-4 order-first d-flex  justify-content-center">

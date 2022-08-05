@@ -1,5 +1,5 @@
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "../styles/MyProfile.module.css";
 import { useAuth } from "../context/auth";
 import { useEffect } from "react";
@@ -7,7 +7,6 @@ import cn from "classnames";
 
 export default function MyProfile() {
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = `${user.username} profile - Binar Games`;
@@ -52,13 +51,11 @@ export default function MyProfile() {
                 <p>{new Date(user.createdAt).toLocaleDateString()}</p>
               </div>
               <div className="row justify-content-center mt-3">
-                <Button
-                  type="submit"
-                  className={style.loginButton}
-                  onClick={() => navigate("/edit-profile")}
-                >
-                  Edit
-                </Button>
+                <Link to="/edit-profile">
+                  <Button type="button" className={style.loginButton}>
+                    Edit
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
