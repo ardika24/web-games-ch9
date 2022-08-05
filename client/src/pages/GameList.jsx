@@ -25,11 +25,14 @@ export default function GameList() {
                       <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                       <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                         <Card.Title>
-                          <Link to="/rock-paper-scissor">
-                            <Button type="button" className="opacity-75">
-                              Play Now!
-                            </Button>
-                          </Link>
+                          <Button
+                            as={Link}
+                            to="/rock-paper-scissor"
+                            type="button"
+                            className="opacity-75"
+                          >
+                            Play Now!
+                          </Button>
                         </Card.Title>
                       </Card.ImgOverlay>
                     </Card>
@@ -47,9 +50,9 @@ export default function GameList() {
                   alt="First slide"
                 />
                 <Carousel.Caption className="text-dark fs-4">
-                  <Link to="/rock-paper-scissor">
-                    <Button type="button">Play Now!</Button>
-                  </Link>
+                  <Button as={Link} to="/rock-paper-scissor" type="button">
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -60,9 +63,9 @@ export default function GameList() {
                 />
 
                 <Carousel.Caption>
-                  <Link to="/tic-tac-toe">
-                    <Button type="button">Play Now!</Button>
-                  </Link>
+                  <Button as={Link} to="/tic-tac-toe" type="button">
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -75,11 +78,14 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Link to="/tic-tac-toe">
-                          <Button type="button" className="opacity-75">
-                            Play Now!
-                          </Button>
-                        </Link>
+                        <Button
+                          as={Link}
+                          to="/tic-tac-toe"
+                          type="button"
+                          className="opacity-75"
+                        >
+                          Play Now!
+                        </Button>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>
@@ -104,11 +110,14 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Link to="/rock-paper-scissor">
-                          <Button type="button" className="opacity-75">
-                            Play Now!
-                          </Button>
-                        </Link>
+                        <Button
+                          as={Link}
+                          to="/rock-paper-scissor"
+                          type="button"
+                          className="opacity-75"
+                        >
+                          Play Now!
+                        </Button>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>
@@ -125,9 +134,9 @@ export default function GameList() {
                   alt="First slide"
                 />
                 <Carousel.Caption className="text-dark fs-4">
-                  <Link to="/rock-paper-scissor">
-                    <Button type="button">Play Now!</Button>
-                  </Link>
+                  <Button as={Link} to="/rock-paper-scissor" type="button">
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
               <Carousel.Item>
@@ -138,9 +147,9 @@ export default function GameList() {
                 />
 
                 <Carousel.Caption>
-                  <Link to="/tic-tac-toe">
-                    <Button type="button">Play Now!</Button>
-                  </Link>
+                  <Button as={Link} to="/tic-tac-toe" type="button">
+                    Play Now!
+                  </Button>
                 </Carousel.Caption>
               </Carousel.Item>
             </Carousel>
@@ -153,11 +162,14 @@ export default function GameList() {
                     <Card.Img src={`/game${idx + 1}.jpg`} alt="Card image" />
                     <Card.ImgOverlay className="d-flex align-items-center justify-content-center shadow-lg">
                       <Card.Title>
-                        <Link to="/tic-tac-toe">
-                          <Button type="button" className="opacity-75">
-                            Play Now!
-                          </Button>
-                        </Link>
+                        <Button
+                          as={Link}
+                          to="/tic-tac-toe"
+                          type="button"
+                          className="opacity-75"
+                        >
+                          Play Now!
+                        </Button>
                       </Card.Title>
                     </Card.ImgOverlay>
                   </Card>

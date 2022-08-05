@@ -16,11 +16,9 @@ function LandingPage() {
         <br />
         <h1>PLEASE LOGIN TO PLAY!</h1>
 
-        <Link to="/game-list">
-          <Button variant="primary" type="button">
-            PLAY NOW!
-          </Button>
-        </Link>
+        <Button as={Link} to="/game-list" variant="primary" type="button">
+          PLAY NOW!
+        </Button>
       </div>
     </div>
   );

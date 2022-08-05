@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "../styles/GameDetailTTT.module.css";
+import cn from "classnames";
 
 export default function GameDetail() {
   const [details, setDetails] = useState([]);
@@ -41,15 +42,15 @@ export default function GameDetail() {
               <Card.Img src="/tictactoe.png" alt="rps" />
               <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
                 <Card.Title>
-                  <Link to="/tic-tac-toe/play">
-                    <Button
-                      type="button"
-                      variant="primary"
-                      style={{ width: "13rem" }}
-                    >
-                      PLAY
-                    </Button>
-                  </Link>
+                  <Button
+                    as={Link}
+                    to="/tic-tac-toe/play"
+                    type="button"
+                    variant="primary"
+                    style={{ width: "13rem" }}
+                  >
+                    PLAY
+                  </Button>
                 </Card.Title>
               </Card.ImgOverlay>
             </Card>
@@ -72,7 +73,7 @@ export default function GameDetail() {
             </div>
           </div>
           <div className="col-lg-6 text-light">
-            <div className={`${style.right} rounded overflow-auto`}>
+            <div className={cn(style.right, "rounded overflow-auto")}>
               <div className="container p-5">
                 <h2 className="text-center">LEADERBOARD:</h2>
                 <br />

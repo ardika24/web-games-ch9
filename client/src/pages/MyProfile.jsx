@@ -51,11 +51,14 @@ export default function MyProfile() {
                 <p>{new Date(user.createdAt).toLocaleDateString()}</p>
               </div>
               <div className="row justify-content-center mt-3">
-                <Link to="/edit-profile">
-                  <Button type="button" className={style.loginButton}>
-                    Edit
-                  </Button>
-                </Link>
+                <Button
+                  as={Link}
+                  to="/edit-profile"
+                  type="button"
+                  className={style.loginButton}
+                >
+                  Edit
+                </Button>
               </div>
             </div>
           </div>

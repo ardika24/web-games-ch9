@@ -31,11 +31,14 @@ function HomePage() {
             </div>
 
             <div className="row justify-content-center mt-4">
-              <Link to="/game-list">
-                <Button type="button" className={style.loginButton}>
-                  Play!
-                </Button>
-              </Link>
+              <Button
+                as={Link}
+                to="/game-list"
+                type="button"
+                className={style.loginButton}
+              >
+                Play!
+              </Button>
             </div>
           </div>
           <div className="col-lg-4 order-first d-flex  justify-content-center">
