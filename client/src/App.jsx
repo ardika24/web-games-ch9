@@ -41,13 +41,13 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route 
-            path="/home" 
-            element={
-              <RequireAuth>
-                <HomePage />
-              </RequireAuth>
-            } 
+            <Route
+              path="/home"
+              element={
+                <RequireAuth>
+                  <HomePage />
+                </RequireAuth>
+              }
             />
 
             <Route
