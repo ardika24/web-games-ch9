@@ -1,17 +1,16 @@
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import style from "./css/HomePage.module.css";
+import style from "../styles/HomePage.module.css";
 import { useAuth } from "../context/auth";
 import { useEffect } from "react";
-
 
 function HomePage() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    document.title = `Hello ${user.username} Lets start play some games - Binar Games`
-  }, [user.username])
+    document.title = `Hello ${user.username} Lets start play some games - Binar Games`;
+  }, [user.username]);
 
   return (
     <div className={style.home}>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import style from "./css/GameDetailTTT.module.css";
+import style from "../styles/GameDetailTTT.module.css";
 
 export default function GameDetail() {
   const navigate = useNavigate();

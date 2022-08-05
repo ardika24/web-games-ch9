@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-#regForm {
+.regForm {
   background-color: #4d7bf1;
   color: #ffffff;
   margin: 2em;
@@ -41,7 +41,7 @@
   border-radius: 1rem;
 }
 
-#regForm p {
+.regForm p {
   align-self: center;
 }
 

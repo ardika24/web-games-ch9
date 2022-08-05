@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAccessToken } from "../context/auth";
-import style from "./css/UserProfile.module.css";
+import style from "../styles/UserProfile.module.css";
 
 export default function UserProfile() {
   const params = useParams();

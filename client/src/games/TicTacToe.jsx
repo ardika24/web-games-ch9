@@ -1,4 +1,4 @@
-import style from "./TicTacToe.module.css";
+import style from "../styles/TicTacToe.module.css";
 import { useState, useEffect } from "react";
 
 const defaultSquares = () => new Array(9).fill(null);

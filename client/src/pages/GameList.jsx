@@ -1,6 +1,6 @@
 import { Carousel, Button, Col, Row, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import style from "./css/GameList.module.css";
+import style from "../styles/GameList.module.css";
 import { useEffect } from "react";
 
 export default function GameList() {

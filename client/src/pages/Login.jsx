@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import style from "./css/Login.module.css";
+import style from "../styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
+import cn from "classnames";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -27,14 +28,14 @@ function Login() {
       }),
     });
 
-    setLoading(false);
-
     if (response.ok) {
       const data = await response.json();
-      login(data.accessToken);
+      await login(data.accessToken);
+      setLoading(false);
       navigate("/home");
     } else {
       const data = await response.json();
+      setLoading(false);
       if (data && data.error) {
         if (
           data.error.code === "auth/user-not-found" ||
@@ -45,17 +46,19 @@ function Login() {
       }
     }
   }
-  
+
   useEffect(() => {
-    document.title = "Login to your account - Binar Games"
-  }, [])
+    document.title = "Login to your account - Binar Games";
+  }, []);
 
   return (
     <div className={style.container}>
       <div className="row pt-3 justify-content-center">
         <div
-          className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
-          id={style.loginForm}
+          className={cn(
+            style.loginForm,
+            "col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
+          )}
         >
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
           <Form className="d-grid" onSubmit={onSubmit}>

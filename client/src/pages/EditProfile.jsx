@@ -1,5 +1,5 @@
 import { Button, Form, Col, Row } from "react-bootstrap";
-import style from "./css/EditProfile.module.css";
+import style from "../styles/EditProfile.module.css";
 import { useAuth } from "../context/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";

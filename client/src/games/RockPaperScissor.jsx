@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import style from "./RockPaperScissor.module.css";
+import style from "../styles/RockPaperScissor.module.css";
 import { useAuth } from "../context/auth";
 
 export default function RockPaperScissor() {

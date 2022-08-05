@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-#loginForm {
+.loginForm {
   background-color: #4d7bf1;
   color: #ffffff;
   margin: 2em;
@@ -41,7 +41,7 @@
   border-radius: 1rem;
 }
 
-#loginForm p {
+.loginForm p {
   align-self: center;
 }
 
