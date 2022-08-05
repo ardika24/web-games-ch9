@@ -15,14 +15,10 @@
   line-height: 2em;
 }
 
-.button {
+.loginButton {
   margin-top: 1em;
   width: 10rem;
   font-weight: 700;
-}
-
-.loginButton {
-  width: 15rem;
   background-color: #002176;
   justify-self: end;
 }

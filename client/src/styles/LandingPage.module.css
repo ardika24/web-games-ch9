@@ -17,15 +17,15 @@
   justify-content: center;
 }
 
-.landingPage button {
-  margin-top: 1em;
-  width: 10rem;
-  font-weight: 700;
-}
-
 .landingPage h1 {
   line-height: 2.5rem;
   color: #cfdbfa;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #002176,
     0 0 30px #002176, 0 0 40px #002176, 0 0 55px #002176, 0 0 75px #002176;
+}
+
+.button {
+  margin-top: 1em;
+  width: 10rem;
+  font-weight: 700;
 }
