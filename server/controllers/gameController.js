@@ -20,16 +20,16 @@ module.exports = {
   async updateScore(req, res, next) {
     try {
       const { id } = req.params;
-      const user = await User.findBypk(id);
+      const user = await User.findByPk(id);
       if (!user) {
         return res.status(400).json({
           result: "Failed",
           message: `User with ${id} not found`,
         });
       }
-      const score = (await parseInt(user.total_score)) + req.body.total_score;
+      const score = parseInt(user.total_score + req.body.total_score);
       const updatedScore = await User.update(
-        { ...req.body, total_score: !score ? user.total_score : score },
+        { total_score: !score ? user.total_score : score },
         {
           where: { id: id },
         }

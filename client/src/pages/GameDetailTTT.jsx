@@ -1,19 +1,26 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { getAccessToken } from "../context/auth";
 import style from "../styles/GameDetailTTT.module.css";
 import cn from "classnames";
 
 export default function GameDetail() {
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const accessToken = getAccessToken();
 
   useEffect(() => {
     let ignore = false;
 
     async function boardData() {
       setLoading(true);
-      const response = await fetch("http://localhost:4000/api/v1/user/");
+      const response = await fetch(
+        "http://localhost:4000/api/v1/games/high-score",
+        {
+          headers: new Headers({ Authorization: accessToken }),
+        }
+      );
       const data = await response.json();
 
       if (ignore) return;
@@ -27,7 +34,7 @@ export default function GameDetail() {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [accessToken]);
 
   useEffect(() => {
     document.title = "Rock Paper Scissor Detail Game Information - Binar Games";
@@ -94,7 +101,7 @@ export default function GameDetail() {
                         </tr>
                       </tbody>
                     ) : (
-                      details.map((detail, index) => (
+                      details.data.map((detail, index) => (
                         <tbody key={detail.id}>
                           <tr>
                             <td>{index + 1}</td>
