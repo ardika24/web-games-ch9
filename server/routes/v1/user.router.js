@@ -1,12 +1,11 @@
 const userRouter = require("express").Router();
 const UserController = require("../../controllers/userController");
-const restict = require("../../middleware/restrict");
+const restrict = require("../../middlewares/restrict");
 
 // @ /api/v1/user
 
-userRouter.get("/", restict, UserController.getUsers);
-userRouter.get("/:id", restict, UserController.getUserById);
-userRouter.post("/", restrict, UserController.createUser);
+userRouter.get("/", restrict, UserController.getUsers);
+userRouter.get("/:id", restrict, UserController.getUserById);
 userRouter.put("/:id", restrict, UserController.updateUser);
 userRouter.delete("/:id", restrict, UserController.deleteUser);
 
