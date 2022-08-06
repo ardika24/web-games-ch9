@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import style from "./css/Login.module.css";
+import style from "../styles/Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
+import cn from "classnames";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -54,8 +55,10 @@ function Login() {
     <div className={style.container}>
       <div className="row pt-3 justify-content-center">
         <div
-          className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
-          id={style.loginForm}
+          className={cn(
+            style.loginForm,
+            "col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
+          )}
         >
           <h2 className="fs-3 text-center text-light">LOG IN TO CONTINUE</h2>
           <Form className="d-grid" onSubmit={onSubmit}>

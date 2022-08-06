@@ -1,19 +1,19 @@
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import style from "./css/MyProfile.module.css";
+import { Link } from "react-router-dom";
+import style from "../styles/MyProfile.module.css";
 import { useAuth } from "../context/auth";
 import { useEffect } from "react";
+import cn from "classnames";
 
 export default function MyProfile() {
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = `${user.username} profile - Binar Games`;
   }, [user.username]);
 
   return (
-    <div className={`${style.container} container-fluid`}>
+    <div className={cn(style.container, "container-fluid")}>
       <div className="row pt-5">
         <div className="col-lg-5">
           <div className="left text-light">
@@ -52,9 +52,10 @@ export default function MyProfile() {
               </div>
               <div className="row justify-content-center mt-3">
                 <Button
-                  type="submit"
+                  as={Link}
+                  to="/edit-profile"
+                  type="button"
                   className={style.loginButton}
-                  onClick={() => navigate("/edit-profile")}
                 >
                   Edit
                 </Button>

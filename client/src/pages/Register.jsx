@@ -1,9 +1,10 @@
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import style from "./css/Register.module.css";
+import style from "../styles/Register.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
+import cn from "classnames";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -28,14 +29,15 @@ function Register() {
       }),
     });
 
-    setLoading(false);
-
     if (response.ok) {
       const data = await response.json();
-      login(data.accessToken);
+      await login(data.accessToken);
+      setLoading(false);
+      alert("Register Success");
       navigate("/home");
     } else {
       const data = await response.json();
+      setLoading(false);
       if (data && data.error) {
         if (data.error.code === "auth/user-exist") {
           alert("Username or email already exist, please login");
@@ -44,17 +46,19 @@ function Register() {
       }
     }
   }
-  
+
   useEffect(() => {
-    document.title = "Create your account - Binar Games"
-  }, [])
+    document.title = "Create your account - Binar Games";
+  }, []);
 
   return (
     <div className={style.container}>
       <div className="row pt-3 justify-content-center">
         <div
-          className="col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
-          id={style.regForm}
+          className={cn(
+            style.regForm,
+            "col-lg-6 col-sm-5 px-sm-3 d-flex flex-column justify-content-center"
+          )}
         >
           <h2 className="fs-3 text-center text-light">
             REGISTER FOR YOUR ACCOUNT

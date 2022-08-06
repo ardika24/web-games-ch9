@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import style from "./RockPaperScissor.module.css";
 import { useAuth } from "../context/auth";
 
 export default function RockPaperScissor() {
@@ -180,7 +179,7 @@ export default function RockPaperScissor() {
   }, []);
 
   return (
-    <div className={style.home}>
+    <div>
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
         <div className="col">
           <h3>{user.username}</h3>

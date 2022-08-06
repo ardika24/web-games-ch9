@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
-import style from "./css/GameDetailTTT.module.css";
+import { Link } from "react-router-dom";
+import style from "../styles/GameDetailTTT.module.css";
+import cn from "classnames";
 
 export default function GameDetail() {
-  const navigate = useNavigate();
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,9 +43,10 @@ export default function GameDetail() {
               <Card.ImgOverlay className="d-flex align-items-end justify-content-end">
                 <Card.Title>
                   <Button
+                    as={Link}
+                    to="/tic-tac-toe/play"
                     type="button"
                     variant="primary"
-                    onClick={() => navigate("/tic-tac-toe/play")}
                     style={{ width: "13rem" }}
                   >
                     PLAY
@@ -72,7 +73,7 @@ export default function GameDetail() {
             </div>
           </div>
           <div className="col-lg-6 text-light">
-            <div className={`${style.right} rounded overflow-auto`}>
+            <div className={cn(style.right, "rounded overflow-auto")}>
               <div className="container p-5">
                 <h2 className="text-center">LEADERBOARD:</h2>
                 <br />
