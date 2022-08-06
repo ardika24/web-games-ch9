@@ -27,12 +27,16 @@ class UserController {
         conditions.push({ social_media_url });
       }
       const data = await User.findAll({
-        order: [["total_score", "DESC"]],
+        where: {
+          [Op.and]: conditions,
+        },
       });
-      res.json(data);
-      // if (data) {
-      //   return res.status(200).json(data);
-      // }
+      if (data) {
+        return res.status(200).json({
+          result: "Success",
+          data,
+        });
+      }
     } catch (err) {
       next(err);
     }
@@ -50,35 +54,6 @@ class UserController {
           message: `Player with ${id} not found`,
         });
       }
-    } catch (err) {
-      next(err);
-    }
-  }
-
-  static async createUser(req, res, next) {
-    try {
-      const { email, username, password, bio, city, social_media_url } =
-        req.body;
-      if (!username || !email) {
-        return res.status(400).json({
-          result: "Failed",
-          message: "username or email cannot be empty",
-        });
-      }
-      if (!password) {
-        return res.status(400).json({
-          result: "Failed",
-          message: "password cannot be empty",
-        });
-      }
-      const newUser = {
-        username,
-        email,
-        password: await hashPassword(password),
-        bio,
-        city,
-        social_media_url,
-      };
     } catch (err) {
       next(err);
     }

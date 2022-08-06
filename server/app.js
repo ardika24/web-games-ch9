@@ -19,5 +19,5 @@ app.use(passport.initialize());
 app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
-  console.log(`Listeing on http://localhost:${PORT}`);
+  console.log(`Listening on http://localhost:${PORT}`);
 });
