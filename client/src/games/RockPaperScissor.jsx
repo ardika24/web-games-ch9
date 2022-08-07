@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { getAccessToken } from "../context/auth";
 import { useAuth } from "../context/auth";
 
 export default function RockPaperScissor() {
   const { user } = useAuth();
+  const accessToken = getAccessToken();
   const [uRockIsActive, setURockIsActive] = useState(false);
   const [uPaperIsActive, setUPaperIsActive] = useState(false);
   const [uScissorIsActive, setUScissorIsActive] = useState(false);
@@ -96,6 +98,7 @@ export default function RockPaperScissor() {
             }),
             headers: new Headers({
               "Content-Type": "application/json; charset=UTF-8",
+              Authorization: accessToken,
             }),
           }
         );
@@ -106,7 +109,7 @@ export default function RockPaperScissor() {
       }
       if (score.current >= 3) {
         const response = await fetch(
-          `http://localhost:4000/api/v1/user/${user.id}`,
+          `http://localhost:4000/api/v1/games/${user.id}`,
           {
             method: "PUT",
             body: JSON.stringify({
@@ -126,7 +129,7 @@ export default function RockPaperScissor() {
       }
     }
     addScore();
-  }, [user.id, score.current]);
+  }, [user.id, score.current, accessToken]);
 
   const handleURockClick = () => {
     setURockIsActive(true);
