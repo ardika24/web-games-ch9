@@ -1,12 +1,15 @@
 import { Button, Form, Col, Row } from "react-bootstrap";
 import style from "../styles/EditProfile.module.css";
-import { useAuth } from "../context/auth";
+import { getAccessToken } from "../store/slices/user";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cn from "classnames";
+import { useSelector } from "react-redux";
+import { userSelector } from "../store/slices/user";
 
 export default function MyProfile() {
-  const { user, latestData } = useAuth();
+  const accessToken = getAccessToken();
+  const { user } = useSelector(userSelector);
   const navigate = useNavigate();
   const [username, setUsername] = useState(user.username);
   const [socmed, setSocMed] = useState(user.social_media_url ?? "");
@@ -33,12 +36,12 @@ export default function MyProfile() {
         }),
         headers: new Headers({
           "Content-Type": "application/json; charset=UTF-8",
+          Authorization: accessToken,
         }),
       }
     );
 
     if (response.ok) {
-      await latestData();
       setLoading(false);
       alert("Congratulations, your account has been successfully updated.");
       navigate("/my-profile");

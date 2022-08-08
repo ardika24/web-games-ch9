@@ -1,11 +1,12 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "../styles/HomePage.module.css";
-import { useAuth } from "../context/auth";
+import { useSelector } from "react-redux";
+import { userSelector } from "../store/slices/user";
 import { useEffect } from "react";
 
 function HomePage() {
-  const { user } = useAuth();
+  const { user } = useSelector(userSelector);
 
   useEffect(() => {
     document.title = `Hello ${user.username} Lets start play some games - Binar Games`;

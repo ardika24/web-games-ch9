@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getAccessToken } from "../context/auth";
+import { getAccessToken } from "../store/slices/user";
 import style from "../styles/GameDetailRPS.module.css";
 import cn from "classnames";
 

@@ -10,7 +10,7 @@ function RequireAuth({ children }) {
   }
 
   if (error) {
-    return <h3>Somethin went wrong when loading user data</h3>;
+    return <h3>Something went wrong when loading user data</h3>;
   }
 
   if (!user) {

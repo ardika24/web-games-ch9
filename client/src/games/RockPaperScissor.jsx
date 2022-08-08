@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { getAccessToken } from "../context/auth";
-import { useAuth } from "../context/auth";
-
+import { getAccessToken } from "../store/slices/user";
+import { useSelector } from "react-redux";
+import { userSelector } from "../store/slices/user";
 import { Snackbar, Alert } from "@mui/material";
 
 export default function RockPaperScissor() {
-  const { user } = useAuth();
+  const { user } = useSelector(userSelector);
   const accessToken = getAccessToken();
   const [point, setPoint] = useState(false);
   const [choice, setChoice] = useState("user");

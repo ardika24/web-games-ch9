@@ -31,8 +31,9 @@ function Login() {
 
     if (response.ok) {
       const data = await response.json();
-      await dispatch(login(data.accessToken));
+      dispatch(login(data.accessToken));
 
+      console.log({ data });
       setLoading(false);
 
       navigate("/home");

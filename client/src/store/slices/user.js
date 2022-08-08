@@ -53,7 +53,7 @@ export function getCurrentUser() {
 
     try {
       dispatch(setUserLoading());
-      const response = await fetch("http://localhost:4000/v1/api/auth/whoami", {
+      const response = await fetch("http://localhost:4000/api/v1/auth/whoami", {
         headers: new Headers({ Authorization: accessToken }),
       });
 
