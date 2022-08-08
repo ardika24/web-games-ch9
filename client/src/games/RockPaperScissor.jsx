@@ -7,7 +7,6 @@ import { Snackbar, Alert } from "@mui/material";
 export default function RockPaperScissor() {
   const { user } = useAuth();
   const accessToken = getAccessToken();
-  const [totalScore, setTotalScore] = useState();
   const [point, setPoint] = useState(false);
   const [choice, setChoice] = useState("user");
   const [botChoice, setBotChoice] = useState("bot");
@@ -145,10 +144,6 @@ export default function RockPaperScissor() {
       </div>
     );
   }
-
-  useEffect(() => {
-    setTotalScore(user.total_score);
-  }, [user.total_score]);
 
   return (
     <div>
