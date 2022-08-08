@@ -1,10 +1,11 @@
-import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import style from "../styles/Register.module.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { Form, Button } from "react-bootstrap";
+import style from "../styles/Register.module.css";
 import cn from "classnames";
+import { useNavigate } from "react-router-dom";
+import { login } from "../store/slices/user";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -31,13 +32,19 @@ function Register() {
 
     if (response.ok) {
       const data = await response.json();
-      await login(data.accessToken);
+
+      await dispatch(login(data.accessToken));
+
       setLoading(false);
+
       alert("Register Success");
+
       navigate("/home");
     } else {
       const data = await response.json();
+
       setLoading(false);
+
       if (data && data.error) {
         if (data.error.code === "auth/user-exist") {
           alert("Username or email already exist, please login");

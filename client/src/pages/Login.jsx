@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "../styles/Login.module.css";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/auth";
 import cn from "classnames";
+import { useNavigate } from "react-router-dom";
+import { login } from "../store/slices/user";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const dispatch = useDispatch();
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -30,12 +31,16 @@ function Login() {
 
     if (response.ok) {
       const data = await response.json();
-      await login(data.accessToken);
+      await dispatch(login(data.accessToken));
+
       setLoading(false);
+
       navigate("/home");
     } else {
       const data = await response.json();
+
       setLoading(false);
+
       if (data && data.error) {
         if (
           data.error.code === "auth/user-not-found" ||
