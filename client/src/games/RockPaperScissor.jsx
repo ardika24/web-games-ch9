@@ -2,77 +2,63 @@ import { useEffect, useRef, useState } from "react";
 import { getAccessToken } from "../context/auth";
 import { useAuth } from "../context/auth";
 
+import { Snackbar, Alert } from "@mui/material";
+
 export default function RockPaperScissor() {
   const { user } = useAuth();
   const accessToken = getAccessToken();
-  const [uRockIsActive, setURockIsActive] = useState(false);
-  const [uPaperIsActive, setUPaperIsActive] = useState(false);
-  const [uScissorIsActive, setUScissorIsActive] = useState(false);
-  const [comRockIsActive, setComRockIsActive] = useState(false);
-  const [comPaperIsActive, setComPaperIsActive] = useState(false);
-  const [comScissorIsActive, setComScissorIsActive] = useState(false);
+  const [totalScore, setTotalScore] = useState();
+  const [point, setPoint] = useState(false);
+  const [choice, setChoice] = useState("user");
+  const [botChoice, setBotChoice] = useState("bot");
 
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState("VS");
 
   const winScore = useRef(null);
   const score = useRef(null);
-  const hasil = useRef(null);
 
   function comChoice() {
     let com = Math.random();
     if (com < 0.34) {
-      setComRockIsActive(true);
-      setComPaperIsActive(false);
-      setComScissorIsActive(false);
+      setBotChoice("rock");
     } else if (com >= 0.34 && com < 0.67) {
-      setComPaperIsActive(true);
-      setComRockIsActive(false);
-      setComScissorIsActive(false);
+      setBotChoice("paper");
     } else {
-      setComScissorIsActive(true);
-      setComPaperIsActive(false);
-      setComRockIsActive(false);
+      setBotChoice("scissor");
     }
   }
 
   useEffect(() => {
     function output() {
-      if (uRockIsActive === true && comPaperIsActive === true)
-        setResult("You Lose!");
-      if (uRockIsActive === true && comScissorIsActive === true)
-        setResult("You Win!");
-      if (uRockIsActive === true && comRockIsActive === true)
+      if (choice === botChoice) {
         setResult("Draw!");
-
-      if (uPaperIsActive === true && comPaperIsActive === true)
-        setResult("Draw!");
-      if (uPaperIsActive === true && comScissorIsActive === true)
+      }
+      if (choice === "rock" && botChoice === "paper") {
         setResult("You Lose!");
-      if (uPaperIsActive === true && comRockIsActive === true)
+      }
+      if (choice === "rock" && botChoice === "scissor") {
         setResult("You Win!");
-
-      if (uScissorIsActive === true && comPaperIsActive === true)
-        setResult("You Win!");
-      if (uScissorIsActive === true && comScissorIsActive === true)
-        setResult("Draw!");
-      if (uScissorIsActive === true && comRockIsActive === true)
+      }
+      if (choice === "paper" && botChoice === "scissor") {
         setResult("You Lose!");
+      }
+      if (choice === "paper" && botChoice === "rock") {
+        setResult("You Win!");
+      }
+      if (choice === "scissor" && botChoice === "rock") {
+        setResult("You Lose!");
+      }
+      if (choice === "scissor" && botChoice === "paper") {
+        setResult("You Win!");
+      }
     }
     output();
-  }, [
-    comPaperIsActive,
-    comRockIsActive,
-    comScissorIsActive,
-    uPaperIsActive,
-    uRockIsActive,
-    uScissorIsActive,
-  ]);
+  }, [botChoice, choice]);
 
   useEffect(() => {
     function win() {
       if (winScore.current.textContent === "You Win!") {
         score.current += 1;
-        hasil.current.textContent = `${score.current}`;
       }
 
       if (
@@ -80,7 +66,6 @@ export default function RockPaperScissor() {
         winScore.current.textContent === "Draw!"
       ) {
         score.current = 0;
-        hasil.current.textContent = "0";
       }
     }
     win();
@@ -88,7 +73,7 @@ export default function RockPaperScissor() {
 
   useEffect(() => {
     async function addScore() {
-      if (score.current >= 1 && score.current < 3) {
+      if (score.current >= 1) {
         const response = await fetch(
           `http://localhost:4000/api/v1/user/${user.id}`,
           {
@@ -104,76 +89,41 @@ export default function RockPaperScissor() {
         );
 
         if (response.ok) {
-          alert("You got 10 points");
-        }
-      }
-      if (score.current >= 3) {
-        const response = await fetch(
-          `http://localhost:4000/api/v1/games/${user.id}`,
-          {
-            method: "PUT",
-            body: JSON.stringify({
-              total_score: 30,
-            }),
-            headers: new Headers({
-              "Content-Type": "application/json; charset=UTF-8",
-            }),
-          }
-        );
-
-        if (response.ok) {
-          alert(
-            `You got ${score.current} win streaks and 30 points, keep going!`
-          );
+          setPoint(true);
+          setTimeout(() => {
+            setPoint(false);
+          }, 2500);
         }
       }
     }
     addScore();
-  }, [user.id, score.current, accessToken]);
+  }, [user.id, accessToken, score.current]);
 
   const handleURockClick = () => {
-    setURockIsActive(true);
-    setUPaperIsActive(false);
-    setUScissorIsActive(false);
+    setChoice("rock");
     comChoice();
     setTimeout(() => {
-      setURockIsActive(false);
-      setUPaperIsActive(false);
-      setUScissorIsActive(false);
-      setComRockIsActive(false);
-      setComPaperIsActive(false);
-      setComScissorIsActive(false);
-      setResult("");
+      setChoice("user");
+      setBotChoice("bot");
+      setResult("VS");
     }, 800);
   };
   const handleUPaperClick = () => {
-    setUPaperIsActive(true);
-    setURockIsActive(false);
-    setUScissorIsActive(false);
+    setChoice("paper");
     comChoice();
     setTimeout(() => {
-      setURockIsActive(false);
-      setUPaperIsActive(false);
-      setUScissorIsActive(false);
-      setComRockIsActive(false);
-      setComPaperIsActive(false);
-      setComScissorIsActive(false);
-      setResult("");
+      setChoice("user");
+      setBotChoice("bot");
+      setResult("VS");
     }, 800);
   };
   const handleUScissorClick = () => {
-    setUScissorIsActive(true);
-    setUPaperIsActive(false);
-    setURockIsActive(false);
+    setChoice("scissor");
     comChoice();
     setTimeout(() => {
-      setURockIsActive(false);
-      setUPaperIsActive(false);
-      setUScissorIsActive(false);
-      setComRockIsActive(false);
-      setComPaperIsActive(false);
-      setComScissorIsActive(false);
-      setResult("");
+      setChoice("user");
+      setBotChoice("bot");
+      setResult("VS");
     }, 800);
   };
 
@@ -181,8 +131,28 @@ export default function RockPaperScissor() {
     document.title = "Rock Paper Scissor Play Room - Binar Games";
   }, []);
 
+  function jsx_alert() {
+    return (
+      <div>
+        <Snackbar
+          open="true"
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert icon={false} severity="info">
+            You've got 10 points!
+          </Alert>
+        </Snackbar>
+      </div>
+    );
+  }
+
+  useEffect(() => {
+    setTotalScore(user.total_score);
+  }, [user.total_score]);
+
   return (
     <div>
+      {point && jsx_alert()}
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
         <div className="col">
           <h3>{user.username}</h3>
@@ -194,14 +164,8 @@ export default function RockPaperScissor() {
 
       <div className="row text-center text-light">
         <div className="col">
-          <h6>Reach 3 or more win streaks to get more points!</h6>
-        </div>
-      </div>
-
-      <div className="row text-center text-light">
-        <div className="col">
           <h4>
-            Win Streak: <span ref={hasil}>0</span>
+            Round: <span>0</span>
           </h4>
         </div>
       </div>
@@ -213,7 +177,7 @@ export default function RockPaperScissor() {
               style={{
                 width: "10rem",
                 cursor: "pointer",
-                transform: uRockIsActive ? "rotate(90deg)" : "",
+                transform: choice === "rock" ? "rotate(90deg)" : "",
                 transition: "300ms",
               }}
               onClick={handleURockClick}
@@ -226,7 +190,7 @@ export default function RockPaperScissor() {
               style={{
                 width: "8rem",
                 cursor: "pointer",
-                transform: uPaperIsActive ? "rotate(90deg)" : "",
+                transform: choice === "paper" ? "rotate(90deg)" : "",
                 transition: "300ms",
               }}
               onClick={handleUPaperClick}
@@ -239,7 +203,7 @@ export default function RockPaperScissor() {
               style={{
                 width: "10rem",
                 cursor: "pointer",
-                transform: uScissorIsActive ? "rotate(90deg)" : "",
+                transform: choice === "scissor" ? "rotate(90deg)" : "",
                 transition: "300ms",
               }}
               onClick={handleUScissorClick}
@@ -250,7 +214,7 @@ export default function RockPaperScissor() {
         </div>
         <div className="col-1">
           <h1 className="text-center text-light" ref={winScore}>
-            {result ? result : "VS"}
+            {result}
           </h1>
         </div>
         <div className="col">
@@ -258,7 +222,7 @@ export default function RockPaperScissor() {
             <img
               style={{
                 width: "10rem",
-                transform: comRockIsActive ? "rotate(-90deg)" : "",
+                transform: botChoice === "rock" ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}
               src="/comRock.png"
@@ -269,7 +233,7 @@ export default function RockPaperScissor() {
             <img
               style={{
                 width: "8rem",
-                transform: comPaperIsActive ? "rotate(-90deg)" : "",
+                transform: botChoice === "paper" ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}
               src="/comPaper.png"
@@ -280,7 +244,7 @@ export default function RockPaperScissor() {
             <img
               style={{
                 width: "10rem",
-                transform: comScissorIsActive ? "rotate(-90deg)" : "",
+                transform: botChoice === "scissor" ? "rotate(-90deg)" : "",
                 transition: "300ms",
               }}
               src="/comScissors.png"
