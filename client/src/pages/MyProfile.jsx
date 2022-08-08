@@ -1,12 +1,13 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import style from "../styles/MyProfile.module.css";
-import { useAuth } from "../context/auth";
+import { useSelector } from "react-redux";
+import { userSelector } from "../store/slices/user";
 import { useEffect } from "react";
 import cn from "classnames";
 
 export default function MyProfile() {
-  const { user } = useAuth();
+  const { user } = useSelector(userSelector);
 
   useEffect(() => {
     document.title = `${user.username} profile - Binar Games`;
