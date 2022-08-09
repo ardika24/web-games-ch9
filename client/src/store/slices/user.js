@@ -82,3 +82,16 @@ export function logout() {
     dispatch(setUserEmpty());
   };
 }
+
+export function latestData() {
+  const currentUser = getCurrentUser();
+  if (currentUser) {
+    return (dispatch) => {
+      return dispatch(getCurrentUser());
+    };
+  } else {
+    return (dispatch) => {
+      dispatch(setUserEmpty());
+    };
+  }
+}
