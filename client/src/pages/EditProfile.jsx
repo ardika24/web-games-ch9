@@ -1,14 +1,15 @@
 import { Button, Form, Col, Row } from "react-bootstrap";
 import style from "../styles/EditProfile.module.css";
-import { getAccessToken } from "../store/slices/user";
+import { getAccessToken, latestData } from "../store/slices/user";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cn from "classnames";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userSelector } from "../store/slices/user";
 
 export default function MyProfile() {
   const accessToken = getAccessToken();
+  const dispatch = useDispatch();
   const { user } = useSelector(userSelector);
   const navigate = useNavigate();
   const [username, setUsername] = useState(user.username);
@@ -42,6 +43,7 @@ export default function MyProfile() {
     );
 
     if (response.ok) {
+      dispatch(latestData());
       setLoading(false);
       alert("Congratulations, your account has been successfully updated.");
       navigate("/my-profile");

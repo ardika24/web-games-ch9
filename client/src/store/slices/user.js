@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  loading: false,
   error: null,
 };
 
@@ -11,21 +10,19 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUserLoading: (state) => {
-      state.loading = true;
+      state.user = null;
     },
     setUserData: (state, action) => {
       state.user = action.payload;
       state.error = null;
-      state.loading = false;
     },
     setUserEmpty: (state) => {
-      state.user = null;
+      state.user = false;
       state.error = null;
-      state.loading = false;
     },
     setUserError: (state, action) => {
       state.error = action.payload;
-      state.loading = false;
+      state.user = false;
     },
   },
 });
@@ -81,4 +78,17 @@ export function logout() {
     localStorage.removeItem(KEY_ACCESS_TOKEN);
     dispatch(setUserEmpty());
   };
+}
+
+export function latestData() {
+  const currentUser = getCurrentUser();
+  if (currentUser) {
+    return (dispatch) => {
+      return dispatch(getCurrentUser());
+    };
+  } else {
+    return (dispatch) => {
+      dispatch(setUserEmpty());
+    };
+  }
 }
