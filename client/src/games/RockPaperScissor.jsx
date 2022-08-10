@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { getAccessToken } from "../store/slices/user";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { userSelector } from "../store/slices/user";
+import { scoreSelector, currentScore } from "../store/slices/score";
 import { Snackbar, Alert } from "@mui/material";
 
 export default function RockPaperScissor() {
   const { user } = useSelector(userSelector);
+  const { score } = useSelector(scoreSelector);
   const accessToken = getAccessToken();
+  const dispatch = useDispatch();
   const [point, setPoint] = useState(false);
   const [choice, setChoice] = useState("user");
   const [botChoice, setBotChoice] = useState("bot");
@@ -14,7 +17,7 @@ export default function RockPaperScissor() {
   const [result, setResult] = useState("VS");
 
   const winScore = useRef(null);
-  const score = useRef(null);
+  const scoreCount = useRef(null);
 
   function comChoice() {
     let com = Math.random();
@@ -57,14 +60,14 @@ export default function RockPaperScissor() {
   useEffect(() => {
     function win() {
       if (winScore.current.textContent === "You Win!") {
-        score.current += 1;
+        scoreCount.current += 1;
       }
 
       if (
         winScore.current.textContent === "You Lose!" ||
         winScore.current.textContent === "Draw!"
       ) {
-        score.current = 0;
+        scoreCount.current = 0;
       }
     }
     win();
@@ -72,7 +75,7 @@ export default function RockPaperScissor() {
 
   useEffect(() => {
     async function addScore() {
-      if (score.current >= 1) {
+      if (scoreCount.current >= 1) {
         const response = await fetch(
           `http://localhost:4000/api/v1/user/${user.id}`,
           {
@@ -88,6 +91,7 @@ export default function RockPaperScissor() {
         );
 
         if (response.ok) {
+          dispatch(currentScore());
           setPoint(true);
           setTimeout(() => {
             setPoint(false);
@@ -96,7 +100,7 @@ export default function RockPaperScissor() {
       }
     }
     addScore();
-  }, [user.id, accessToken, score.current]);
+  }, [user.id, accessToken, scoreCount.current, dispatch]);
 
   const handleURockClick = () => {
     setChoice("rock");
@@ -134,7 +138,7 @@ export default function RockPaperScissor() {
     return (
       <div>
         <Snackbar
-          open="true"
+          open={true}
           anchorOrigin={{ vertical: "top", horizontal: "center" }}
         >
           <Alert icon={false} severity="info">
@@ -149,6 +153,7 @@ export default function RockPaperScissor() {
     <div>
       {point && jsx_alert()}
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
+        <h3>Your total score: {!score ? user.total_score : score}</h3>
         <div className="col">
           <h3>{user.username}</h3>
         </div>
