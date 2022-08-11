@@ -2,12 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { getAccessToken } from "../store/slices/user";
 import { useSelector, useDispatch } from "react-redux";
 import { userSelector } from "../store/slices/user";
+import {
+  roundSelector,
+  setRound,
+  resetRound,
+  outputWin,
+  outputLose,
+  outputDraw,
+  resetOutput,
+} from "../store/slices/round";
 import { scoreSelector, currentScore } from "../store/slices/score";
-import { Snackbar, Alert } from "@mui/material";
+import { Snackbar, Alert, Button } from "@mui/material";
 
 export default function RockPaperScissor() {
   const { user } = useSelector(userSelector);
   const { score } = useSelector(scoreSelector);
+  const { round, output } = useSelector(roundSelector);
   const accessToken = getAccessToken();
   const dispatch = useDispatch();
   const [point, setPoint] = useState(false);
@@ -16,7 +26,7 @@ export default function RockPaperScissor() {
 
   const [result, setResult] = useState("VS");
 
-  const winScore = useRef(null);
+  const winScore = useRef("");
   const scoreCount = useRef(null);
 
   function comChoice() {
@@ -61,17 +71,20 @@ export default function RockPaperScissor() {
     function win() {
       if (winScore.current.textContent === "You Win!") {
         scoreCount.current += 1;
+        dispatch(outputWin());
       }
 
-      if (
-        winScore.current.textContent === "You Lose!" ||
-        winScore.current.textContent === "Draw!"
-      ) {
+      if (winScore.current.textContent === "You Lose!") {
         scoreCount.current = 0;
+        dispatch(outputLose());
+      }
+      if (winScore.current.textContent === "Draw!") {
+        scoreCount.current = 0;
+        dispatch(outputDraw());
       }
     }
     win();
-  }, [result]);
+  }, [dispatch, result]);
 
   useEffect(() => {
     async function addScore() {
@@ -102,9 +115,69 @@ export default function RockPaperScissor() {
     addScore();
   }, [user.id, accessToken, scoreCount.current, dispatch]);
 
+  function roundReset() {
+    dispatch(resetRound());
+    dispatch(resetOutput());
+  }
+
+  // const [open, setOpen] = useState(true)
+  function jsx_result() {
+    if (output === "You Win") {
+      // dispatch(outputWin());
+      return (
+        <div>
+          <Snackbar
+            open={true}
+            autoHideDuration={1000}
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          >
+            <Alert icon={false} severity="info">
+              Round {round - 1} result: {output}
+            </Alert>
+          </Snackbar>
+        </div>
+      );
+    }
+
+    if (output === "You Lose") {
+      // dispatch(outputLose());
+      return (
+        <div>
+          <Snackbar
+            open={true}
+            autoHideDuration={1000}
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          >
+            <Alert icon={false} severity="info">
+              Round {round - 1} result: {output}
+            </Alert>
+          </Snackbar>
+        </div>
+      );
+    }
+
+    if (output === "Draw") {
+      // dispatch(outputDraw());
+      return (
+        <div>
+          <Snackbar
+            open={true}
+            autoHideDuration={1000}
+            anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+          >
+            <Alert icon={false} severity="info">
+              Round {round - 1} result: {output}
+            </Alert>
+          </Snackbar>
+        </div>
+      );
+    }
+  }
+
   const handleURockClick = () => {
     setChoice("rock");
     comChoice();
+    dispatch(setRound());
     setTimeout(() => {
       setChoice("user");
       setBotChoice("bot");
@@ -114,6 +187,7 @@ export default function RockPaperScissor() {
   const handleUPaperClick = () => {
     setChoice("paper");
     comChoice();
+    dispatch(setRound());
     setTimeout(() => {
       setChoice("user");
       setBotChoice("bot");
@@ -123,6 +197,7 @@ export default function RockPaperScissor() {
   const handleUScissorClick = () => {
     setChoice("scissor");
     comChoice();
+    dispatch(setRound());
     setTimeout(() => {
       setChoice("user");
       setBotChoice("bot");
@@ -151,6 +226,7 @@ export default function RockPaperScissor() {
 
   return (
     <div>
+      {jsx_result()}
       {point && jsx_alert()}
       <div className="row text-light text-center pt-5 mt-5 justify-content-center">
         <h3>Your total score: {!score ? user.total_score : score}</h3>
@@ -165,8 +241,11 @@ export default function RockPaperScissor() {
       <div className="row text-center text-light">
         <div className="col">
           <h4>
-            Round: <span>0</span>
+            Current Round: <span>{round}</span>
           </h4>
+          <Button variant="contained" onClick={() => roundReset()}>
+            Reset Round
+          </Button>
         </div>
       </div>
 
