@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import style from "../styles/Login.module.css";
 import cn from "classnames";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/slices/user";
 
 function Login() {
@@ -33,7 +32,6 @@ function Login() {
       const data = await response.json();
       dispatch(login(data.accessToken));
 
-      console.log({ data });
       setLoading(false);
 
       navigate("/home");

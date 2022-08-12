@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { getAccessToken } from "../store/slices/user";
 import { useSelector, useDispatch } from "react-redux";
-import { userSelector } from "../store/slices/user";
+import { userSelector, getAccessToken } from "../store/slices/user";
 import {
   roundSelector,
   setRound,
@@ -120,10 +119,8 @@ export default function RockPaperScissor() {
     dispatch(resetOutput());
   }
 
-  // const [open, setOpen] = useState(true)
   function jsx_result() {
     if (output === "You Win") {
-      // dispatch(outputWin());
       return (
         <div>
           <Snackbar
@@ -140,7 +137,6 @@ export default function RockPaperScissor() {
     }
 
     if (output === "You Lose") {
-      // dispatch(outputLose());
       return (
         <div>
           <Snackbar
@@ -157,7 +153,6 @@ export default function RockPaperScissor() {
     }
 
     if (output === "Draw") {
-      // dispatch(outputDraw());
       return (
         <div>
           <Snackbar
