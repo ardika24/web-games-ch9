@@ -1,5 +1,6 @@
 import style from "../styles/TicTacToe.module.css";
 import { useState, useEffect } from "react";
+import { Snackbar, Alert, Button } from "@mui/material";
 
 const defaultSquares = () => new Array(9).fill(null);
 
