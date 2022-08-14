@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAccessToken } from "../store/slices/user";
 import style from "../styles/UserProfile.module.css";

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import style from "../styles/Register.module.css";
 import cn from "classnames";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/slices/user";
 
 function Register() {

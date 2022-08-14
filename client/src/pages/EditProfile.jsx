@@ -1,11 +1,10 @@
 import { Button, Form, Col, Row } from "react-bootstrap";
 import style from "../styles/EditProfile.module.css";
-import { getAccessToken, latestData } from "../store/slices/user";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import cn from "classnames";
 import { useSelector, useDispatch } from "react-redux";
-import { userSelector } from "../store/slices/user";
+import { userSelector, getAccessToken, latestData } from "../store/slices/user";
 
 export default function MyProfile() {
   const accessToken = getAccessToken();
